@@ -22,6 +22,10 @@
 		E3FADDF31C6201B200AE2E12 /* STFEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDF21C6201B200AE2E12 /* STFEnemy.swift */; };
 		E3FADDF61C6201DA00AE2E12 /* STFLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDF51C6201DA00AE2E12 /* STFLocalDataManager.swift */; };
 		E3FADDF81C62020A00AE2E12 /* STFRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDF71C62020A00AE2E12 /* STFRemoteDataManager.swift */; };
+		E3FADDFC1C622AB000AE2E12 /* STGDefenceStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDFB1C622AB000AE2E12 /* STGDefenceStats.swift */; };
+		E3FADDFE1C622DF300AE2E12 /* STGAttackStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDFD1C622DF300AE2E12 /* STGAttackStats.swift */; };
+		E3FADE001C6232E500AE2E12 /* STFItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDFF1C6232E500AE2E12 /* STFItem.swift */; };
+		E3FADE021C6236C600AE2E12 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADE011C6236C600AE2E12 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,10 @@
 		E3FADDF21C6201B200AE2E12 /* STFEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STFEnemy.swift; sourceTree = "<group>"; };
 		E3FADDF51C6201DA00AE2E12 /* STFLocalDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STFLocalDataManager.swift; sourceTree = "<group>"; };
 		E3FADDF71C62020A00AE2E12 /* STFRemoteDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STFRemoteDataManager.swift; sourceTree = "<group>"; };
+		E3FADDFB1C622AB000AE2E12 /* STGDefenceStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STGDefenceStats.swift; sourceTree = "<group>"; };
+		E3FADDFD1C622DF300AE2E12 /* STGAttackStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STGAttackStats.swift; sourceTree = "<group>"; };
+		E3FADDFF1C6232E500AE2E12 /* STFItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STFItem.swift; sourceTree = "<group>"; };
+		E3FADE011C6236C600AE2E12 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +160,9 @@
 				E3FADDEE1C62016F00AE2E12 /* STFGameCharacter.swift */,
 				E3FADDF01C62018000AE2E12 /* STFPlayer.swift */,
 				E3FADDF21C6201B200AE2E12 /* STFEnemy.swift */,
+				E3FADDFB1C622AB000AE2E12 /* STGDefenceStats.swift */,
+				E3FADDFD1C622DF300AE2E12 /* STGAttackStats.swift */,
+				E3FADDFF1C6232E500AE2E12 /* STFItem.swift */,
 			);
 			name = GameObjects;
 			sourceTree = "<group>";
@@ -169,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				E3FADDBD1C61FFEC00AE2E12 /* GameViewController.swift */,
+				E3FADE011C6236C600AE2E12 /* MenuViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -315,12 +327,16 @@
 				E3FADDED1C62015200AE2E12 /* STFBattleManager.swift in Sources */,
 				E3FADDEF1C62016F00AE2E12 /* STFGameCharacter.swift in Sources */,
 				E3FADDBC1C61FFEC00AE2E12 /* GameScene.swift in Sources */,
+				E3FADE021C6236C600AE2E12 /* MenuViewController.swift in Sources */,
 				E3FADDEB1C62011500AE2E12 /* STFGameManager.swift in Sources */,
 				E3FADDF61C6201DA00AE2E12 /* STFLocalDataManager.swift in Sources */,
 				E3FADDF81C62020A00AE2E12 /* STFRemoteDataManager.swift in Sources */,
+				E3FADDFC1C622AB000AE2E12 /* STGDefenceStats.swift in Sources */,
 				E3FADDF31C6201B200AE2E12 /* STFEnemy.swift in Sources */,
+				E3FADDFE1C622DF300AE2E12 /* STGAttackStats.swift in Sources */,
 				E3FADDBE1C61FFEC00AE2E12 /* GameViewController.swift in Sources */,
 				E3FADDB81C61FFEC00AE2E12 /* AppDelegate.swift in Sources */,
+				E3FADE001C6232E500AE2E12 /* STFItem.swift in Sources */,
 				E3FADDF11C62018000AE2E12 /* STFPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

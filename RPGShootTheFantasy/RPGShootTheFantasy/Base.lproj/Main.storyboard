@@ -1,13 +1,80 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8118" systemVersion="15A172" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ady-ao-Db8">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8098"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Menu-->
+        <scene sceneID="TLL-Vq-aLk">
+            <objects>
+                <viewController title="Menu" id="B3k-Lw-R49" customClass="MenuViewController" customModule="RPGShootTheFantasy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4wC-jo-FYU"/>
+                        <viewControllerLayoutGuide type="bottom" id="kJo-jY-ggd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jw8-DS-2iS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZt-kw-UyO">
+                                <rect key="frame" x="116" y="173" width="368" height="53"/>
+                                <color key="backgroundColor" red="0.2439713177" green="0.66666666669999997" blue="0.1689445594" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="DUQ-HH-gcZ"/>
+                                </constraints>
+                                <state key="normal" title="Play"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3n-oa-bPk">
+                                <rect key="frame" x="116" y="269" width="368" height="50"/>
+                                <color key="backgroundColor" red="0.2439713177" green="0.66666666669999997" blue="0.1689445594" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ZJZ-Jx-KRT"/>
+                                </constraints>
+                                <state key="normal" title="About"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJ1-Ww-ddM">
+                                <rect key="frame" x="116" y="456" width="368" height="53"/>
+                                <color key="backgroundColor" red="0.2439713177" green="0.66666666669999997" blue="0.1689445594" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="d88-yo-JBN"/>
+                                </constraints>
+                                <state key="normal" title="Exit"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qej-aM-hGx">
+                                <rect key="frame" x="116" y="365" width="368" height="55"/>
+                                <color key="backgroundColor" red="0.2439713177" green="0.66666666669999997" blue="0.1689445594" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Restore"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u3n-oa-bPk" firstAttribute="trailing" secondItem="XZt-kw-UyO" secondAttribute="trailing" id="1Zw-cK-6Pg"/>
+                            <constraint firstItem="hJ1-Ww-ddM" firstAttribute="leading" secondItem="qej-aM-hGx" secondAttribute="leading" id="5uh-ZW-uvf"/>
+                            <constraint firstItem="hJ1-Ww-ddM" firstAttribute="trailing" secondItem="qej-aM-hGx" secondAttribute="trailing" id="6Sg-UV-Yn6"/>
+                            <constraint firstItem="qej-aM-hGx" firstAttribute="top" secondItem="u3n-oa-bPk" secondAttribute="bottom" constant="46" id="8p0-Sb-axS"/>
+                            <constraint firstItem="u3n-oa-bPk" firstAttribute="top" secondItem="XZt-kw-UyO" secondAttribute="bottom" constant="43" id="DYS-OF-c8U"/>
+                            <constraint firstItem="XZt-kw-UyO" firstAttribute="leading" secondItem="u3n-oa-bPk" secondAttribute="leading" id="HJ4-2x-khE"/>
+                            <constraint firstItem="XZt-kw-UyO" firstAttribute="leading" secondItem="jw8-DS-2iS" secondAttribute="leadingMargin" constant="96" id="KA1-Vh-E83"/>
+                            <constraint firstItem="kJo-jY-ggd" firstAttribute="top" secondItem="hJ1-Ww-ddM" secondAttribute="bottom" constant="91" id="MhD-Em-qXj"/>
+                            <constraint firstItem="XZt-kw-UyO" firstAttribute="top" secondItem="4wC-jo-FYU" secondAttribute="bottom" constant="109" id="PFe-vc-GTp"/>
+                            <constraint firstItem="hJ1-Ww-ddM" firstAttribute="top" secondItem="qej-aM-hGx" secondAttribute="bottom" constant="36" id="Y7q-0G-Scg"/>
+                            <constraint firstItem="qej-aM-hGx" firstAttribute="leading" secondItem="u3n-oa-bPk" secondAttribute="leading" id="YKE-gD-RG0"/>
+                            <constraint firstItem="u3n-oa-bPk" firstAttribute="trailing" secondItem="qej-aM-hGx" secondAttribute="trailing" id="aWi-OE-LT7"/>
+                            <constraint firstItem="hJ1-Ww-ddM" firstAttribute="centerX" secondItem="jw8-DS-2iS" secondAttribute="centerX" id="xiE-7d-NCk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="5DR-Jj-Kh4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sn6-mp-Iz8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="713" y="11"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="RPGShootTheFantasy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8aa-yV-Osq"/>
                         <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
@@ -15,11 +82,30 @@
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1117" y="350"/>
+        </scene>
+        <!--Menu View Contro-->
+        <scene sceneID="0yw-KM-oBC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ady-ao-Db8" customClass="MenuViewContro" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1kv-37-T3q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="B3k-Lw-R49" kind="relationship" relationship="rootViewController" id="FeN-P1-a11"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ypV-IT-lbs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-99" y="11"/>
         </scene>
     </scenes>
 </document>

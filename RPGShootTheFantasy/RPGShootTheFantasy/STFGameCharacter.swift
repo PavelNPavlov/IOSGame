@@ -9,5 +9,15 @@
 import UIKit
 
 class STFGameCharacter: NSObject {
+    
+    var health: Double;
+    var defStats: STGDefenceStats;
+    var attStats: STGAttackStats;
+    
+    override init(){
+        self.health = 100;
+        self.defStats = STGDefenceStats();
+        self.attStats = STGAttackStats();
+    }
 
 }
