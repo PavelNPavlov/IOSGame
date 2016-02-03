@@ -15,6 +15,13 @@
 		E3FADDC61C61FFEC00AE2E12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3FADDC41C61FFEC00AE2E12 /* LaunchScreen.storyboard */; };
 		E3FADDD11C61FFEC00AE2E12 /* RPGShootTheFantasyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDD01C61FFEC00AE2E12 /* RPGShootTheFantasyTests.swift */; };
 		E3FADDDC1C61FFEC00AE2E12 /* RPGShootTheFantasyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDDB1C61FFEC00AE2E12 /* RPGShootTheFantasyUITests.swift */; };
+		E3FADDEB1C62011500AE2E12 /* STFGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDEA1C62011500AE2E12 /* STFGameManager.swift */; };
+		E3FADDED1C62015200AE2E12 /* STFBattleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDEC1C62015200AE2E12 /* STFBattleManager.swift */; };
+		E3FADDEF1C62016F00AE2E12 /* STFGameCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDEE1C62016F00AE2E12 /* STFGameCharacter.swift */; };
+		E3FADDF11C62018000AE2E12 /* STFPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDF01C62018000AE2E12 /* STFPlayer.swift */; };
+		E3FADDF31C6201B200AE2E12 /* STFEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDF21C6201B200AE2E12 /* STFEnemy.swift */; };
+		E3FADDF61C6201DA00AE2E12 /* STFLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDF51C6201DA00AE2E12 /* STFLocalDataManager.swift */; };
+		E3FADDF81C62020A00AE2E12 /* STFRemoteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDF71C62020A00AE2E12 /* STFRemoteDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,13 @@
 		E3FADDD71C61FFEC00AE2E12 /* RPGShootTheFantasyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RPGShootTheFantasyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3FADDDB1C61FFEC00AE2E12 /* RPGShootTheFantasyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPGShootTheFantasyUITests.swift; sourceTree = "<group>"; };
 		E3FADDDD1C61FFEC00AE2E12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3FADDEA1C62011500AE2E12 /* STFGameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STFGameManager.swift; sourceTree = "<group>"; };
+		E3FADDEC1C62015200AE2E12 /* STFBattleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STFBattleManager.swift; sourceTree = "<group>"; };
+		E3FADDEE1C62016F00AE2E12 /* STFGameCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STFGameCharacter.swift; sourceTree = "<group>"; };
+		E3FADDF01C62018000AE2E12 /* STFPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STFPlayer.swift; sourceTree = "<group>"; };
+		E3FADDF21C6201B200AE2E12 /* STFEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STFEnemy.swift; sourceTree = "<group>"; };
+		E3FADDF51C6201DA00AE2E12 /* STFLocalDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STFLocalDataManager.swift; sourceTree = "<group>"; };
+		E3FADDF71C62020A00AE2E12 /* STFRemoteDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STFRemoteDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +113,11 @@
 		E3FADDB61C61FFEC00AE2E12 /* RPGShootTheFantasy */ = {
 			isa = PBXGroup;
 			children = (
+				E3FADDFA1C62022C00AE2E12 /* SKScenes */,
+				E3FADDF91C62021300AE2E12 /* ViewControllers */,
+				E3FADDF41C6201B600AE2E12 /* LocalRemoteDataManagment */,
+				E3FADDE91C62009A00AE2E12 /* GameObjects */,
 				E3FADDB71C61FFEC00AE2E12 /* AppDelegate.swift */,
-				E3FADDBB1C61FFEC00AE2E12 /* GameScene.swift */,
-				E3FADDBD1C61FFEC00AE2E12 /* GameViewController.swift */,
 				E3FADDBF1C61FFEC00AE2E12 /* Main.storyboard */,
 				E3FADDC21C61FFEC00AE2E12 /* Assets.xcassets */,
 				E3FADDC41C61FFEC00AE2E12 /* LaunchScreen.storyboard */,
@@ -126,6 +142,43 @@
 				E3FADDDD1C61FFEC00AE2E12 /* Info.plist */,
 			);
 			path = RPGShootTheFantasyUITests;
+			sourceTree = "<group>";
+		};
+		E3FADDE91C62009A00AE2E12 /* GameObjects */ = {
+			isa = PBXGroup;
+			children = (
+				E3FADDEA1C62011500AE2E12 /* STFGameManager.swift */,
+				E3FADDEC1C62015200AE2E12 /* STFBattleManager.swift */,
+				E3FADDEE1C62016F00AE2E12 /* STFGameCharacter.swift */,
+				E3FADDF01C62018000AE2E12 /* STFPlayer.swift */,
+				E3FADDF21C6201B200AE2E12 /* STFEnemy.swift */,
+			);
+			name = GameObjects;
+			sourceTree = "<group>";
+		};
+		E3FADDF41C6201B600AE2E12 /* LocalRemoteDataManagment */ = {
+			isa = PBXGroup;
+			children = (
+				E3FADDF51C6201DA00AE2E12 /* STFLocalDataManager.swift */,
+				E3FADDF71C62020A00AE2E12 /* STFRemoteDataManager.swift */,
+			);
+			name = LocalRemoteDataManagment;
+			sourceTree = "<group>";
+		};
+		E3FADDF91C62021300AE2E12 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E3FADDBD1C61FFEC00AE2E12 /* GameViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E3FADDFA1C62022C00AE2E12 /* SKScenes */ = {
+			isa = PBXGroup;
+			children = (
+				E3FADDBB1C61FFEC00AE2E12 /* GameScene.swift */,
+			);
+			name = SKScenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +312,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3FADDED1C62015200AE2E12 /* STFBattleManager.swift in Sources */,
+				E3FADDEF1C62016F00AE2E12 /* STFGameCharacter.swift in Sources */,
 				E3FADDBC1C61FFEC00AE2E12 /* GameScene.swift in Sources */,
+				E3FADDEB1C62011500AE2E12 /* STFGameManager.swift in Sources */,
+				E3FADDF61C6201DA00AE2E12 /* STFLocalDataManager.swift in Sources */,
+				E3FADDF81C62020A00AE2E12 /* STFRemoteDataManager.swift in Sources */,
+				E3FADDF31C6201B200AE2E12 /* STFEnemy.swift in Sources */,
 				E3FADDBE1C61FFEC00AE2E12 /* GameViewController.swift in Sources */,
 				E3FADDB81C61FFEC00AE2E12 /* AppDelegate.swift in Sources */,
+				E3FADDF11C62018000AE2E12 /* STFPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
