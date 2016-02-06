@@ -7,32 +7,67 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ExplorationViewController: UIViewController {
 
     @IBOutlet weak var optionOneBtn: UIButton!
     @IBOutlet weak var optionTwoBtn: UIButton!
     @IBOutlet weak var optionThreeBtn: UIButton!
+    
+    let soundEffectFile = "choice.mp3"
+    var audioPlayer: AVAudioPlayer!;
 
     override func viewDidLoad() {
         super.viewDidLoad()
         //placeHolderOptions
-        self.setOptions();     
+        self.setOptionButtons();
+        self.setUpSoundEffects();
+
 
         // Do any additional setup after loading the view.
     }
     
-    func setOptions(){
+    func setUpSoundEffects(){
+        let path = NSBundle.mainBundle().resourcePath!+"/" + self.soundEffectFile;
+        let url = NSURL(fileURLWithPath: path);
+        do{
+            audioPlayer = try AVAudioPlayer(contentsOfURL: url);
+        }
+        catch {
+            print(" Sound Error");
+        }
+        audioPlayer.numberOfLoops = 0;
+
+    }
+    
+    func setOptionButtons(){
         let optionNames = ["forest","dungeon","sewer"]
         
+        // Background Images
         self.optionOneBtn.setBackgroundImage(UIImage(named: optionNames[0]), forState: .Normal);
         self.optionTwoBtn.setBackgroundImage(UIImage(named: optionNames[1]), forState: .Normal);
         self.optionThreeBtn.setBackgroundImage(UIImage(named: optionNames[2]), forState: .Normal);
         
+        // Text
         self.optionOneBtn.setTitle(optionNames[0], forState: .Normal);
         self.optionTwoBtn.setTitle(optionNames[1], forState: .Normal);
         self.optionThreeBtn.setTitle(optionNames[2], forState: .Normal);
+        
+        // Actions
+        self.optionOneBtn.addTarget(self, action: "buttonAction:", forControlEvents: .TouchUpInside);
+        self.optionTwoBtn.addTarget(self, action: "buttonAction:", forControlEvents: .TouchUpInside);
+        self.optionThreeBtn.addTarget(self, action: "buttonAction:", forControlEvents: .TouchUpInside);
+    
     }
+    
+    func buttonAction(sender: UIButton){
+        self.audioPlayer.stop();
+        let levelName = sender.titleLabel!.text!;
+        self.audioPlayer.play();
+        print(levelName);
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
