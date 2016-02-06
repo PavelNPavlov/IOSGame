@@ -28,6 +28,7 @@ class FightScene: SKScene {
     var enemies: [SKSpriteNode] = [];
     var enemyLocations: [CGPoint]!;
     var attackIndicator: SKSpriteNode!;
+    var gestureArea: SKSpriteNode!;
     var indicatedIndex: Int = 0;
     
     override func didMoveToView(view: SKView) {
@@ -93,7 +94,29 @@ class FightScene: SKScene {
         addChild(attackIndicator);
         
         self.makeEnemies(0);
+        
+        let gestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipe:"))
+        gestureRecognizer.direction = [.Left,.Right];
+        self.view!.addGestureRecognizer(gestureRecognizer)
+        
+        gestureArea = SKSpriteNode(imageNamed: "gesture");
+        gestureArea.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame)-200);
+        gestureArea.name = "command";
+        addChild(gestureArea);
+    }
+    
+    func handleSwipe(recognizer: UISwipeGestureRecognizer) {
+        if(recognizer.state != .Ended){
+            return;
+        }
+        
+        var touchLocation = recognizer.locationInView(recognizer.view)
+        touchLocation = self.convertPointFromView(touchLocation)
+        let node = self.nodeAtPoint(touchLocation);
 
+        if(node.name == "command"){
+            print("swipe");
+        }
     }
     
     func makeEnemies(count: Int){
