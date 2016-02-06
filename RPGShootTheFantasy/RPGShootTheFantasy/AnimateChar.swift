@@ -57,7 +57,7 @@ class AnimateChar: SKScene {
         
         //add obejct
         
-        var firstFrame = self.idleAnimationFrames[0];
+        let firstFrame = self.idleAnimationFrames[0];
         
         self.object = SKSpriteNode(texture: firstFrame)
         self.object.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))

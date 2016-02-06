@@ -10,19 +10,12 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
-    @IBOutlet weak var option1: UIImageView!
-    @IBOutlet weak var option2: UIImageView!
-    @IBOutlet weak var option3: UIImageView!
     
+    @IBOutlet weak var bgImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        option1.image = UIImage(named: "forest");
-        option2.image = UIImage(named: "forest");
-        option3.image = UIImage(named: "forest");
-
-
-
+        bgImage.image = UIImage(named: "menuBg");
         // Do any additional setup after loading the view.
     }
 
@@ -31,7 +24,33 @@ class MenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+//    NSString *storyBoardId = @"detailsScene";
+//    
+//    DetailsViewController *detailsVC =
+//    [self.storyboard instantiateViewControllerWithIdentifier:storyBoardId];
+//    detailsVC.phone = phone;
+    
 
+    
+    @IBAction func play(sender: AnyObject) {
+              print("Play");
+        let id = "exploreVC";
+        
+        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(id);
+        self.navigationController?.pushViewController(viewController!, animated: true);
+  
+    }
+    @IBAction func about(sender: AnyObject) {
+        print("About");
+    }
+    @IBAction func restore(sender: AnyObject) {
+        print("Restore");
+    }
+
+
+    @IBAction func exit(sender: AnyObject) {
+        print("Exit");
+    }
     /*
     // MARK: - Navigation
 
