@@ -31,15 +31,17 @@ class FightScene: SKScene {
         
         // Get EnemyType
         
-        switch atlasName{
+        switch location{
         case "forest":
             self.atlasName = ork;
+          
             break;
         case "dungeon":
             self.atlasName = wizard;
             break;
         case "sewer":
             self.atlasName = skeleton
+            animSeparation = skeletonFrameCount;
             break;
         default:
             print("Something went wrong with enemy type selection");
