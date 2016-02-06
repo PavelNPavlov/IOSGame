@@ -74,6 +74,10 @@ class ExplorationViewController: UIViewController {
         print(levelName);
     }
 
+    @IBAction func inventory(sender: AnyObject) {
+        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("inventoryVC");
+        self.navigationController?.pushViewController(viewController!, animated: true);
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

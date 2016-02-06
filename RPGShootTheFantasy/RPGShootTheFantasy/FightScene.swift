@@ -25,10 +25,14 @@ class FightScene: SKScene {
     var attackAnimationFrames: [SKTexture]!;
     var takeDmgAnimationFrames: [SKTexture]!;
     var animSeparation: [Int]!;
+    var enemies: [SKSpriteNode] = [];
+    var enemyLocations: [CGPoint]!;
+    var attackIndicator: SKSpriteNode!;
+    var indicatedIndex: Int = 0;
     
     override func didMoveToView(view: SKView) {
         
-        
+        view.backgroundColor = .None;
         // Get EnemyType
         
         switch location{
@@ -83,15 +87,56 @@ class FightScene: SKScene {
         self.idleAnimationFrames = idle;
         self.takeDmgAnimationFrames = hurt;
         
-        //add obejct
+        self.attackIndicator = SKSpriteNode(imageNamed: "arrow");
+        attackIndicator.xScale = 0.5;
+        attackIndicator.yScale = 0.5;
+        addChild(attackIndicator);
+        
+        self.makeEnemies(0);
+
+    }
+    
+    func makeEnemies(count: Int){
         
         let firstFrame = self.idleAnimationFrames[0];
         
-        self.object = SKSpriteNode(texture: firstFrame)
-        self.object.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-        self.animateIdle()
-        addChild(self.object);
 
+        
+        let enemy1 = SKSpriteNode(texture: firstFrame);
+        enemy1.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame)+100);
+        enemy1.name = "e1";
+        
+        let enemy2 = SKSpriteNode(texture: firstFrame);
+        enemy2.position = CGPoint(x: CGRectGetMidX(self.frame)+100, y: CGRectGetMidY(self.frame));
+        enemy2.name = "e2";
+//        
+        let enemy3 = SKSpriteNode(texture: firstFrame);
+        enemy3.position = CGPoint(x: CGRectGetMidX(self.frame)-100, y: CGRectGetMidY(self.frame));
+        enemy3.name = "e3";
+        
+        self.addAnimationToObj(enemy1);
+        self.addAnimationToObj(enemy2);
+        self.addAnimationToObj(enemy3);
+
+        self.enemies.append(enemy1);
+        self.enemies.append(enemy2);
+        self.enemies.append(enemy3);
+        
+        addChild(enemy1)
+        addChild(enemy2)
+        addChild(enemy3)
+        
+      
+    }
+    
+    func addAnimationToObj(node: SKSpriteNode){
+        node.runAction(SKAction.repeatActionForever(
+            SKAction.animateWithTextures(self.idleAnimationFrames,
+                timePerFrame: 0.2,
+                resize: false,
+                restore: true)),
+            withKey:"animationMain")
+        
     }
     
     //startAnimation
@@ -121,6 +166,28 @@ class FightScene: SKScene {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        let touch:UITouch = touches.first! as UITouch
+        let positionInScene = touch.locationInNode(self)
+        let touchedNode = self.nodeAtPoint(positionInScene)
+        
+        let name = touchedNode.name;
+        
+        if(name == "e1"){
+            indicatedIndex = 0;
+        }
+        else if(name == "e2"){
+            indicatedIndex = 1;
+        }
+        else if(name == "e3"){
+            indicatedIndex = 2;
+        }
+        else{
+            return;
+        }
+        
+        attackIndicator.position = enemies[indicatedIndex].position;
+        attackIndicator.position.y = attackIndicator.position.y + 50;
 
     }
    

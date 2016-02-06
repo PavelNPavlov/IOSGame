@@ -154,10 +154,23 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFh-p2-lwx">
+                                <rect key="frame" x="469" y="60" width="103" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="103" id="Rd3-FY-IKs"/>
+                                </constraints>
+                                <state key="normal" title="Invetory">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="inventory:" destination="OO4-Lh-9wn" eventType="touchUpInside" id="C2W-Zx-BHY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="elM-hg-gQW" firstAttribute="trailing" secondItem="yOF-vF-fdW" secondAttribute="trailing" id="1hX-qg-NPK"/>
+                            <constraint firstItem="FFh-p2-lwx" firstAttribute="top" secondItem="Qt3-2I-0a8" secondAttribute="top" id="9O3-MY-2NX"/>
                             <constraint firstItem="3Me-VY-Wi8" firstAttribute="top" secondItem="yOF-vF-fdW" secondAttribute="bottom" constant="30" id="C5T-RO-F7x"/>
                             <constraint firstItem="Qt3-2I-0a8" firstAttribute="top" secondItem="upc-iJ-sLM" secondAttribute="bottom" constant="40" id="GFJ-TH-3eD"/>
                             <constraint firstItem="UfR-Oj-gcq" firstAttribute="leading" secondItem="elM-hg-gQW" secondAttribute="leading" id="HMX-zY-vDp"/>
@@ -168,8 +181,10 @@
                             <constraint firstItem="elM-hg-gQW" firstAttribute="top" secondItem="UfR-Oj-gcq" secondAttribute="bottom" constant="20" id="X85-hy-2lX"/>
                             <constraint firstItem="UfR-Oj-gcq" firstAttribute="top" secondItem="Qt3-2I-0a8" secondAttribute="bottom" constant="23" id="Y1I-Es-GKg"/>
                             <constraint firstItem="UfR-Oj-gcq" firstAttribute="centerX" secondItem="Qt3-2I-0a8" secondAttribute="centerX" id="Yms-Ae-VnW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FFh-p2-lwx" secondAttribute="trailing" constant="8" id="aAt-0y-uFj"/>
                             <constraint firstItem="UfR-Oj-gcq" firstAttribute="trailing" secondItem="elM-hg-gQW" secondAttribute="trailing" id="i59-J9-Eyl"/>
                             <constraint firstItem="Qt3-2I-0a8" firstAttribute="centerX" secondItem="rfD-6l-7Hx" secondAttribute="centerX" id="uY9-HN-JZx"/>
+                            <constraint firstItem="3Me-VY-Wi8" firstAttribute="top" secondItem="FFh-p2-lwx" secondAttribute="bottom" constant="495" id="wW6-oH-dYJ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -181,6 +196,88 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gna-RK-srI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1423" y="11"/>
+        </scene>
+        <!--Inventory View Controller-->
+        <scene sceneID="aoH-TU-awD">
+            <objects>
+                <viewController storyboardIdentifier="inventoryVC" id="ln8-Bb-txV" customClass="InventoryViewController" customModule="RPGShootTheFantasy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VXu-ub-Fq9"/>
+                        <viewControllerLayoutGuide type="bottom" id="YJR-XO-TW5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T3s-41-eyd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mqo-ET-Y1O">
+                                <rect key="frame" x="135" y="350" width="330" height="176"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaz-gT-zUk">
+                                <rect key="frame" x="473" y="143" width="46" height="30"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextWeapon:" destination="ln8-Bb-txV" eventType="touchUpInside" id="xok-Dd-b0j"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQH-z6-3un">
+                                <rect key="frame" x="81" y="143" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="2At-Nx-EsQ"/>
+                                </constraints>
+                                <state key="normal" title="Prev"/>
+                                <connections>
+                                    <action selector="prevWeapon:" destination="ln8-Bb-txV" eventType="touchUpInside" id="l4s-PI-Nyn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0F-rl-yTy">
+                                <rect key="frame" x="473" y="423" width="46" height="30"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextArmor:" destination="ln8-Bb-txV" eventType="touchUpInside" id="oQM-rx-Rms"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hfw-0e-RR6">
+                                <rect key="frame" x="81" y="423" width="46" height="30"/>
+                                <state key="normal" title="Prev"/>
+                                <connections>
+                                    <action selector="prevArmor:" destination="ln8-Bb-txV" eventType="touchUpInside" id="VpM-xd-hQ3"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ssz-VU-iPM">
+                                <rect key="frame" x="135" y="70" width="330" height="176"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x0F-rl-yTy" firstAttribute="leading" secondItem="mqo-ET-Y1O" secondAttribute="trailing" constant="8" symbolic="YES" id="39u-PQ-b26"/>
+                            <constraint firstItem="ZQH-z6-3un" firstAttribute="centerY" secondItem="ssz-VU-iPM" secondAttribute="centerY" id="817-be-ClS"/>
+                            <constraint firstItem="gaz-gT-zUk" firstAttribute="baseline" secondItem="ZQH-z6-3un" secondAttribute="baseline" id="BEt-Jq-qT7"/>
+                            <constraint firstItem="ssz-VU-iPM" firstAttribute="leading" secondItem="mqo-ET-Y1O" secondAttribute="leading" id="Dby-FE-lI2"/>
+                            <constraint firstItem="ZQH-z6-3un" firstAttribute="leading" secondItem="T3s-41-eyd" secondAttribute="leadingMargin" constant="61" id="IMf-Hu-IPR"/>
+                            <constraint firstItem="Hfw-0e-RR6" firstAttribute="leading" secondItem="ZQH-z6-3un" secondAttribute="leading" id="Kae-6m-cb4"/>
+                            <constraint firstItem="Hfw-0e-RR6" firstAttribute="baseline" secondItem="x0F-rl-yTy" secondAttribute="baseline" id="Kuv-Jz-DDZ"/>
+                            <constraint firstItem="ssz-VU-iPM" firstAttribute="leading" secondItem="ZQH-z6-3un" secondAttribute="trailing" constant="8" symbolic="YES" id="OOM-ZK-mfi"/>
+                            <constraint firstItem="ZQH-z6-3un" firstAttribute="top" secondItem="VXu-ub-Fq9" secondAttribute="bottom" constant="123" id="Obo-RS-kBh"/>
+                            <constraint firstItem="mqo-ET-Y1O" firstAttribute="leading" secondItem="Hfw-0e-RR6" secondAttribute="trailing" constant="8" symbolic="YES" id="UDu-Ny-JC3"/>
+                            <constraint firstItem="Hfw-0e-RR6" firstAttribute="centerY" secondItem="mqo-ET-Y1O" secondAttribute="centerY" id="Wzv-aI-aYr"/>
+                            <constraint firstItem="gaz-gT-zUk" firstAttribute="leading" secondItem="x0F-rl-yTy" secondAttribute="leading" id="dSL-oX-Hij"/>
+                            <constraint firstItem="YJR-XO-TW5" firstAttribute="top" secondItem="Hfw-0e-RR6" secondAttribute="bottom" constant="147" id="ddG-MM-WEV"/>
+                            <constraint firstItem="x0F-rl-yTy" firstAttribute="trailing" secondItem="gaz-gT-zUk" secondAttribute="trailing" id="g8b-kk-AlA"/>
+                            <constraint firstItem="ssz-VU-iPM" firstAttribute="centerX" secondItem="T3s-41-eyd" secondAttribute="centerX" id="gpT-XO-2eq"/>
+                            <constraint firstItem="gaz-gT-zUk" firstAttribute="leading" secondItem="ssz-VU-iPM" secondAttribute="trailing" constant="8" symbolic="YES" id="gvP-L7-GO6"/>
+                            <constraint firstItem="ssz-VU-iPM" firstAttribute="top" secondItem="VXu-ub-Fq9" secondAttribute="bottom" constant="50" id="lMo-qg-2CY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gaz-gT-zUk" secondAttribute="trailing" constant="61" id="wTu-0E-Kml"/>
+                            <constraint firstItem="YJR-XO-TW5" firstAttribute="top" secondItem="mqo-ET-Y1O" secondAttribute="bottom" constant="74" id="wmb-Nr-XpA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="armour" destination="mqo-ET-Y1O" id="FaX-s4-59f"/>
+                        <outlet property="weapon" destination="ssz-VU-iPM" id="PF4-48-ASn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tpZ-nl-szK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1423" y="685"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
