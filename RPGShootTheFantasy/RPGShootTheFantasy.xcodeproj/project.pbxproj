@@ -11,7 +11,7 @@
 		E3BEEBE51C65EC1700D8BC0C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BEEBE41C65EC1700D8BC0C /* AVFoundation.framework */; };
 		E3BEEBE81C65ECE400D8BC0C /* choice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E3BEEBE71C65ECE400D8BC0C /* choice.mp3 */; };
 		E3FADDB81C61FFEC00AE2E12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDB71C61FFEC00AE2E12 /* AppDelegate.swift */; };
-		E3FADDBC1C61FFEC00AE2E12 /* AnimateChar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDBB1C61FFEC00AE2E12 /* AnimateChar.swift */; };
+		E3FADDBC1C61FFEC00AE2E12 /* FightScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDBB1C61FFEC00AE2E12 /* FightScene.swift */; };
 		E3FADDBE1C61FFEC00AE2E12 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDBD1C61FFEC00AE2E12 /* GameViewController.swift */; };
 		E3FADDC11C61FFEC00AE2E12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3FADDBF1C61FFEC00AE2E12 /* Main.storyboard */; };
 		E3FADDC31C61FFEC00AE2E12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3FADDC21C61FFEC00AE2E12 /* Assets.xcassets */; };
@@ -54,7 +54,7 @@
 		E3BEEBE71C65ECE400D8BC0C /* choice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = choice.mp3; sourceTree = "<group>"; };
 		E3FADDB41C61FFEC00AE2E12 /* RPGShootTheFantasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RPGShootTheFantasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3FADDB71C61FFEC00AE2E12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E3FADDBB1C61FFEC00AE2E12 /* AnimateChar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateChar.swift; sourceTree = "<group>"; };
+		E3FADDBB1C61FFEC00AE2E12 /* FightScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightScene.swift; sourceTree = "<group>"; };
 		E3FADDBD1C61FFEC00AE2E12 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		E3FADDC01C61FFEC00AE2E12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E3FADDC21C61FFEC00AE2E12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -206,7 +206,7 @@
 		E3FADDFA1C62022C00AE2E12 /* SKScenes */ = {
 			isa = PBXGroup;
 			children = (
-				E3FADDBB1C61FFEC00AE2E12 /* AnimateChar.swift */,
+				E3FADDBB1C61FFEC00AE2E12 /* FightScene.swift */,
 			);
 			name = SKScenes;
 			sourceTree = "<group>";
@@ -345,7 +345,7 @@
 			files = (
 				E3FADDED1C62015200AE2E12 /* STFBattleManager.swift in Sources */,
 				E3FADDEF1C62016F00AE2E12 /* STFGameCharacter.swift in Sources */,
-				E3FADDBC1C61FFEC00AE2E12 /* AnimateChar.swift in Sources */,
+				E3FADDBC1C61FFEC00AE2E12 /* FightScene.swift in Sources */,
 				E3BEEBE31C65E1E700D8BC0C /* ExplorationViewController.swift in Sources */,
 				E3FADE021C6236C600AE2E12 /* MenuViewController.swift in Sources */,
 				E3FADDEB1C62011500AE2E12 /* STFGameManager.swift in Sources */,

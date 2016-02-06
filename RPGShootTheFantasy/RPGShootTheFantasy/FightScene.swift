@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class AnimateChar: SKScene {
+class FightScene: SKScene {
     
     var object : SKSpriteNode!;
     var atlasName: String!;
