@@ -10,7 +10,16 @@ import SpriteKit
 
 class FightScene: SKScene {
     
+    // Constants
+    
+    let wizard = "wizard";
+    let ork = "ork";
+    let skeleton = "skeleton";
+    
+    let skeletonFrameCount = [8,4,3];
+    
     var object : SKSpriteNode!;
+    var location: String!;
     var atlasName: String!;
     var idleAnimationFrames: [SKTexture]!;
     var attackAnimationFrames: [SKTexture]!;
@@ -20,40 +29,57 @@ class FightScene: SKScene {
     override func didMoveToView(view: SKView) {
         
         
+        // Get EnemyType
+        
+        switch atlasName{
+        case "forest":
+            self.atlasName = ork;
+            break;
+        case "dungeon":
+            self.atlasName = wizard;
+            break;
+        case "sewer":
+            self.atlasName = skeleton
+            break;
+        default:
+            print("Something went wrong with enemy type selection");
+            break;
+        }
+        
         let animateAtlas = SKTextureAtlas(named: self.atlasName);
         
         //init temp
         
         var attack = [SKTexture]();
         var idle = [SKTexture]();
-        var take = [SKTexture]();
+        var hurt = [SKTexture]();
         
         //attack
         
         for var i=1; i<=self.animSeparation[0]; i++ {
-            let textureName = atlasName+String(i);
-            attack.append(animateAtlas.textureNamed(textureName))
+            let textureName = "idle"+String(i);
+            idle.append(animateAtlas.textureNamed(textureName))
         }
         
         //takeDmg
         
         for var i=1; i<=self.animSeparation[1]; i++ {
-            let textureName = atlasName+String(i+self.animSeparation[0]);
-            take.append(animateAtlas.textureNamed(textureName))
+            let textureName = "attack"+String(i);
+            attack.append(animateAtlas.textureNamed(textureName))
         }
         
         //idle
         
         for var i=1; i<=self.animSeparation[2]; i++ {
-            let textureName = atlasName+String(i+self.animSeparation[0]+self.animSeparation[1]);
-            idle.append(animateAtlas.textureNamed(textureName))
+            let textureName = "hurt"+String(i);
+            hurt.append(animateAtlas.textureNamed(textureName))
         }
         
         //setValues
         
         self.attackAnimationFrames = attack;
         self.idleAnimationFrames = idle;
-        self.takeDmgAnimationFrames = take;
+        self.takeDmgAnimationFrames = hurt;
         
         //add obejct
         
@@ -61,6 +87,7 @@ class FightScene: SKScene {
         
         self.object = SKSpriteNode(texture: firstFrame)
         self.object.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+        self.animateIdle()
         addChild(self.object);
 
     }

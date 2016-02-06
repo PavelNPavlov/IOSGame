@@ -65,6 +65,12 @@ class ExplorationViewController: UIViewController {
         self.audioPlayer.stop();
         let levelName = sender.titleLabel!.text!;
         self.audioPlayer.play();
+        
+        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("fightScene") as! GameViewController;
+        viewController.fightLocation = levelName;
+        
+        self.navigationController?.pushViewController(viewController, animated: true);
+        
         print(levelName);
     }
 
