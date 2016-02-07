@@ -15,6 +15,10 @@ class ExplorationViewController: UIViewController {
     @IBOutlet weak var optionTwoBtn: UIButton!
     @IBOutlet weak var optionThreeBtn: UIButton!
     
+    @IBOutlet weak var explorationProgress1: UILabel!
+    @IBOutlet weak var explorationProgress2: UILabel!    
+    @IBOutlet weak var explorationProgress3: UILabel!
+    
     let soundEffectFile = "choice.mp3"
     var audioPlayer: AVAudioPlayer!;
 
@@ -23,9 +27,23 @@ class ExplorationViewController: UIViewController {
         //placeHolderOptions
         self.setOptionButtons();
         self.setUpSoundEffects();
-
+        self.explorationProgression();
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+         self.explorationProgression();
+    }
+    
+    func explorationProgression(){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate;
+        let gameManager = appDelegate.gameManager;
+        
+        explorationProgress1.text = String(gameManager.forestExplored) + "/" + String(gameManager.maxExplore);
+        explorationProgress2.text = String(gameManager.dungeonExplore) + "/" + String(gameManager.maxExplore);
+        explorationProgress3.text = String(gameManager.sewerExplore) + "/" + String(gameManager.maxExplore);
+        
     }
     
     func setUpSoundEffects(){
@@ -63,7 +81,23 @@ class ExplorationViewController: UIViewController {
     
     func buttonAction(sender: UIButton){
         self.audioPlayer.stop();
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate;
+        let gameManager = appDelegate.gameManager;
         let levelName = sender.titleLabel!.text!;
+        print(levelName);
+        switch levelName{
+            case "forest":
+                gameManager.forestExplored++;
+                break;
+            case "dungeon":
+                gameManager.dungeonExplore++;
+                break;
+            case "sewer":
+                gameManager.sewerExplore++;
+                break;
+            default:
+                break;
+        }
         self.audioPlayer.play();
         
         let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("fightScene") as! GameViewController;
@@ -71,7 +105,6 @@ class ExplorationViewController: UIViewController {
         
         self.navigationController?.pushViewController(viewController, animated: true);
         
-        print(levelName);
     }
 
     @IBAction func inventory(sender: AnyObject) {

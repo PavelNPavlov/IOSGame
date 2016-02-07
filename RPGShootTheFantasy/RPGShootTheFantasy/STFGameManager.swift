@@ -9,5 +9,11 @@
 import UIKit
 
 class STFGameManager: NSObject {
+    
+    var forestExplored = 0;
+    var dungeonExplore = 0;
+    var sewerExplore = 0;
+    
+    var maxExplore = 20;
 
 }
