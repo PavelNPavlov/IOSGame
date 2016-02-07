@@ -18,5 +18,7 @@ class STFGameManager: NSObject {
     
     var playerWeapons = ["pistol"];
     var playerArmor = ["light"];
+    
+    var player = STFPlayer();
 
 }

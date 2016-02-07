@@ -25,8 +25,12 @@ class InventoryViewController: UIViewController {
         currentWeapon = 0;
         currentArmor = 0;
         self.getItems();
-        self.weapon.image = UIImage(named: weapons[currentWeapon]);
-        self.armour.image = UIImage(named: armors[currentArmor]);
+        if(weapons.count>0){
+            self.weapon.image = UIImage(named: weapons[currentWeapon]);
+        }
+        if(armors.count>0){
+            self.armour.image = UIImage(named: armors[currentArmor]);
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -34,16 +38,19 @@ class InventoryViewController: UIViewController {
         currentWeapon = 0;
         currentArmor = 0;
         self.getItems();
-        self.weapon.image = UIImage(named: weapons[currentWeapon]);
-        self.armour.image = UIImage(named: armors[currentArmor]);
-    }
+        if(weapons.count>0){
+            self.weapon.image = UIImage(named: weapons[currentWeapon]);
+        }
+        if(armors.count>0){
+            self.armour.image = UIImage(named: armors[currentArmor]);
+        }    }
     
     func getItems(){
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let gameManager = appDelegate.gameManager;
         
-        weapons = gameManager.playerWeapons;
-        armors = gameManager.playerArmor;
+        weapons = gameManager.player.weapons
+        armors = gameManager.player.armors
     }
 
     override func didReceiveMemoryWarning() {
