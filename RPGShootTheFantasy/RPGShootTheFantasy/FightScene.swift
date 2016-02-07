@@ -26,6 +26,7 @@ class FightScene: SKScene {
     var takeDmgAnimationFrames: [SKTexture]!;
     var animSeparation: [Int]!;
     var enemies: [SKSpriteNode] = [];
+    var eHealth: [SKLabelNode] = [];
     var enemyLocations: [CGPoint]!;
     var attackIndicator: SKSpriteNode!;
     var gestureArea: SKSpriteNode!;
@@ -33,7 +34,7 @@ class FightScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         
-        view.backgroundColor = .None;
+        view.backgroundColor = UIColor.whiteColor();
         // Get EnemyType
         
         switch location{
@@ -95,14 +96,39 @@ class FightScene: SKScene {
         
         self.makeEnemies(0);
         
-        let gestureRecognizer = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipe:"))
-        gestureRecognizer.direction = [.Left,.Right];
-        self.view!.addGestureRecognizer(gestureRecognizer)
+        let gestureRecognizerSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipe:"))
+       
+        self.view!.addGestureRecognizer(gestureRecognizerSwipe)
+         gestureRecognizerSwipe.direction = [.Left,.Right];
+        
+        
+        let gestureRecognizerPinch = UIPinchGestureRecognizer(target: self, action: Selector("handlePinch:"))
+        self.view!.addGestureRecognizer(gestureRecognizerPinch)
+        
+        
         
         gestureArea = SKSpriteNode(imageNamed: "gesture");
         gestureArea.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame)-200);
         gestureArea.name = "command";
+        
+        
         addChild(gestureArea);
+    }
+    
+    func handlePinch(recognizer: UIPinchGestureRecognizer) {
+        
+        if(recognizer.state != .Ended){
+            return;
+        }
+        
+        print("Pinch");
+        var touchLocation = recognizer.locationInView(recognizer.view)
+        touchLocation = self.convertPointFromView(touchLocation)
+        let node = self.nodeAtPoint(touchLocation);
+        
+        if(node.name == "command"){
+            print("pinch");
+        }
     }
     
     func handleSwipe(recognizer: UISwipeGestureRecognizer) {
@@ -128,6 +154,8 @@ class FightScene: SKScene {
         let enemy1 = SKSpriteNode(texture: firstFrame);
         enemy1.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame)+100);
         enemy1.name = "e1";
+
+        
         
         let enemy2 = SKSpriteNode(texture: firstFrame);
         enemy2.position = CGPoint(x: CGRectGetMidX(self.frame)+100, y: CGRectGetMidY(self.frame));
@@ -137,6 +165,17 @@ class FightScene: SKScene {
         enemy3.position = CGPoint(x: CGRectGetMidX(self.frame)-100, y: CGRectGetMidY(self.frame));
         enemy3.name = "e3";
         
+        
+        let eHealth1 = SKLabelNode(text: "100");
+        eHealth1.position = enemy1.position;
+        eHealth1.position.y = eHealth1.position.y-100;
+        let eHealth2 = SKLabelNode(text: "100");
+        eHealth2.position = enemy2.position;
+        eHealth2.position.y = eHealth2.position.y-100;
+        let eHealth3 = SKLabelNode(text: "100");
+        eHealth3.position = enemy3.position;
+        eHealth3.position.y = eHealth3.position.y-100;
+        
         self.addAnimationToObj(enemy1);
         self.addAnimationToObj(enemy2);
         self.addAnimationToObj(enemy3);
@@ -144,11 +183,16 @@ class FightScene: SKScene {
         self.enemies.append(enemy1);
         self.enemies.append(enemy2);
         self.enemies.append(enemy3);
+        self.eHealth.append(eHealth1);
+        self.eHealth.append(eHealth2);
+        self.eHealth.append(eHealth3);
         
         addChild(enemy1)
         addChild(enemy2)
         addChild(enemy3)
-        
+        addChild(eHealth1)
+        addChild(eHealth2)
+        addChild(eHealth3)
       
     }
     
@@ -210,7 +254,13 @@ class FightScene: SKScene {
         }
         
         attackIndicator.position = enemies[indicatedIndex].position;
+        
         attackIndicator.position.y = attackIndicator.position.y + 50;
+        
+        var healt = Int(eHealth[indicatedIndex].text!)!;
+        healt = healt - 10;
+        
+        eHealth[indicatedIndex].text = String(healt);
 
     }
    
