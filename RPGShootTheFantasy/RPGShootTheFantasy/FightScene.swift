@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class FightScene: SKScene {
     
@@ -36,20 +37,31 @@ class FightScene: SKScene {
     var indicatedIndex: Int = 0;
     var battleManger: STFBattleManager = STFBattleManager();
     var enemyActionInProgress = false;
+    var player: STFPlayer!;
+    var backgroundImageName: String!;
     
-    var skeletonPower = STGAttackStats(withCut: 20, andBlunt: 10, andShot: 0, andMagic: 0, andExplosive: 0);
+    //sound effects
+    var enemyAttack: AVAudioPlayer!;
+    var enemyHit: AVPlayer!;
+    var bgMusic: AVPlayer!;
+    
+    var skeletonPower = STGAttackStats(withCut: 20, andBlunt: 20, andShot: 0, andMagic: 0, andExplosive: 0);
     var skeletonDef = STGDefenceStats(withCut: 30, andBlunt: 0, andShot: 10, andMagic: 0, andExplosive: 0);
-    var playerPower = STGAttackStats(withCut: 40, andBlunt: 10, andShot: 20, andMagic: 0, andExplosive: 10);
-    
+    var gameManger: STFGameManager!;
     override func didMoveToView(view: SKView) {
         
         view.backgroundColor = UIColor.whiteColor();
-        // Get EnemyType
         
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        gameManger = appDelegate.gameManager;
+        
+        player = gameManger.player;
+        // Get EnemyType
+        self.setUpBackground();
+      
         switch location{
         case "forest":
             self.atlasName = ork;
-          
             break;
         case "dungeon":
             self.atlasName = wizard;
@@ -62,11 +74,12 @@ class FightScene: SKScene {
             print("Something went wrong with enemy type selection");
             break;
         }
-        
+        self.setUpAudio();
         let animateAtlas = SKTextureAtlas(named: self.atlasName);
         
         turnIndicator = SKLabelNode(text: self.playerTurn);
         turnIndicator.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMaxY(self.frame)-100);
+        turnIndicator.fontName = "PingFang SC Semibold" ;
         addChild(turnIndicator);
         
         //init temp
@@ -102,7 +115,7 @@ class FightScene: SKScene {
         self.idleAnimationFrames = idle;
         self.takeDmgAnimationFrames = hurt;
         
-        self.attackIndicator = SKSpriteNode(imageNamed: "arrow");
+        self.attackIndicator = SKSpriteNode(imageNamed: "arrow2");
         attackIndicator.xScale = 0.5;
         attackIndicator.yScale = 0.5;
         addChild(attackIndicator);
@@ -120,7 +133,7 @@ class FightScene: SKScene {
         
         
         
-        gestureArea = SKSpriteNode(imageNamed: "gesture");
+        gestureArea = SKSpriteNode(imageNamed: "gesture2");
         gestureArea.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame)-200);
         gestureArea.name = "command";
         
@@ -130,10 +143,30 @@ class FightScene: SKScene {
         
     }
     
+    func setUpAudio(){
+            let path1 = NSBundle.mainBundle().resourcePath!+"/" + atlasName + "Attack.mp3";
+            let url1 = NSURL(fileURLWithPath: path1);
+            do{
+                enemyAttack = try AVAudioPlayer(contentsOfURL: url1);
+            }
+            catch {
+                print(" Sound Error");
+            }
+            enemyAttack.numberOfLoops = 0;
+    }
+    
+    func setUpBackground(){
+        let background = SKSpriteNode(imageNamed: self.location);
+        background.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame));
+        background.size = self.frame.size;
+        
+        addChild(background);
+    }
+    
     func endPlayerTurn(){
-        battleManger.isEnemyTurn = true;
         battleManger.currentEnemyInTurn = 0;
         battleManger.isPlayerTurn = false;
+        self.animateDmg(enemies[indicatedIndex]);
     }
     
     func handlePinch(recognizer: UIPinchGestureRecognizer) {
@@ -149,8 +182,12 @@ class FightScene: SKScene {
         
         if(node.name == "command"){
             print("pinch");
+            
+            eHealth[indicatedIndex].text = String(Int(eHealth[indicatedIndex].text!)! - Int(self.player.getAttack().magicAttack - self.skeletonDef.magicDefence));
+            self.endPlayerTurn();
         }
     }
+    
     
     func handleSwipe(recognizer: UISwipeGestureRecognizer) {
         if(recognizer.state != .Ended){
@@ -168,7 +205,13 @@ class FightScene: SKScene {
         if(node.name == "command"){
             print("swipe");
             
-            eHealth[indicatedIndex].text = String(Int(eHealth[indicatedIndex].text!)! - Int(self.playerPower.explosiveAttack-self.skeletonDef.explosiveDefence));
+            let dmg = Int(self.player.getAttack().explosiveAttack - self.skeletonDef.explosiveDefence)
+            
+            if(dmg>0){
+                eHealth[indicatedIndex].text = String(Int(eHealth[indicatedIndex].text!)! - dmg);
+            }
+        
+            
             self.endPlayerTurn();
         }
     }
@@ -197,12 +240,14 @@ class FightScene: SKScene {
         let eHealth1 = SKLabelNode(text: "100");
         eHealth1.position = enemy1.position;
         eHealth1.position.y = eHealth1.position.y-100;
+    
         let eHealth2 = SKLabelNode(text: "100");
         eHealth2.position = enemy2.position;
         eHealth2.position.y = eHealth2.position.y-100;
         let eHealth3 = SKLabelNode(text: "100");
         eHealth3.position = enemy3.position;
         eHealth3.position.y = eHealth3.position.y-100;
+        
         
         self.addAnimationToObj(enemy1);
         self.addAnimationToObj(enemy2);
@@ -214,6 +259,10 @@ class FightScene: SKScene {
         self.eHealth.append(eHealth1);
         self.eHealth.append(eHealth2);
         self.eHealth.append(eHealth3);
+        
+        for lable in eHealth{
+            lable.fontName = "PingFang SC Semibold";
+        }
         
         addChild(enemy1)
         addChild(enemy2)
@@ -243,7 +292,8 @@ class FightScene: SKScene {
             resize: false,
             restore: true),
             completion:{
-                self.addAnimationToObj(node);
+                //self.animateAttack(self.enemies[self.battleManger.currentEnemyInTurn]);
+                self.battleManger.isEnemyTurn = true;
         })
 
     }
@@ -252,6 +302,7 @@ class FightScene: SKScene {
     func animateAttack(node: SKSpriteNode) {
         enemyActionInProgress = true;
         node.removeAllActions();
+        enemyAttack.play();
         node.runAction(SKAction.animateWithTextures(
             self.attackAnimationFrames,
             timePerFrame: 0.25,
@@ -260,6 +311,14 @@ class FightScene: SKScene {
             completion:{
                 self.addAnimationToObj(node);
                 self.enemyActionInProgress = false;
+                let dmg = Int(self.player.getDefence().bluntDefence - self.skeletonPower.bluntAttack);
+                
+                print(dmg);
+                if(dmg>0){
+                    self.gameManger.player.health = self.gameManger.player.health-Double(dmg);
+                    
+                }
+
             })
     }
     
@@ -294,6 +353,17 @@ class FightScene: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
 
+        var i: Int;
+        for i=0; i<enemies.count; ++i{
+            if(Int(eHealth[i].text!)!<=0){
+                
+                self.removeChildrenInArray([enemies[i]]);
+                self.removeChildrenInArray([eHealth[i]]);
+                //enemies.removeAtIndex(i);
+                //eHealth.removeAtIndex(i);
+            
+            }
+        }
         //update turn indicator
         if(battleManger.isPlayerTurn && self.enemyActionInProgress == false){
             self.turnIndicator.text = playerTurn;

@@ -18,7 +18,6 @@ class GameViewController: UIViewController {
 
         let scene = FightScene(size: view.bounds.size)
         scene.location = self.fightLocation;
-        
         let skView = view as! SKView
         scene.scaleMode = .ResizeFill
         skView.presentScene(scene)
