@@ -14,8 +14,8 @@ class InventoryViewController: UIViewController {
     @IBOutlet weak var weapon: UIImageView!
     @IBOutlet weak var armour: UIImageView!
     
-    let weapons = ["pistol","rifle","assaultRifle","shotgun"];
-    let armors = ["light","medium","heavy"];
+    var weapons = ["pistol","rifle","assaultRifle","shotgun"];
+    var armors = ["light","medium","heavy"];
     
     var currentWeapon = 0;
     var currentArmor = 0;
@@ -24,9 +24,26 @@ class InventoryViewController: UIViewController {
 
         currentWeapon = 0;
         currentArmor = 0;
+        self.getItems();
         self.weapon.image = UIImage(named: weapons[currentWeapon]);
         self.armour.image = UIImage(named: armors[currentArmor]);
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        currentWeapon = 0;
+        currentArmor = 0;
+        self.getItems();
+        self.weapon.image = UIImage(named: weapons[currentWeapon]);
+        self.armour.image = UIImage(named: armors[currentArmor]);
+    }
+    
+    func getItems(){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let gameManager = appDelegate.gameManager;
+        
+        weapons = gameManager.playerWeapons;
+        armors = gameManager.playerArmor;
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,7 +53,7 @@ class InventoryViewController: UIViewController {
     
     @IBAction func nextWeapon(sender: AnyObject) {
         
-        if(currentWeapon<3){
+        if(currentWeapon<weapons.count-1){
             currentWeapon++;
             self.weapon.image = UIImage(named: weapons[currentWeapon]);
         }
@@ -51,7 +68,7 @@ class InventoryViewController: UIViewController {
     }
     
     @IBAction func nextArmor(sender: AnyObject) {
-        if(currentArmor<armors.count){
+        if(currentArmor<armors.count - 1){
             currentArmor++;
             self.armour.image = UIImage(named: armors[currentArmor]);
         }

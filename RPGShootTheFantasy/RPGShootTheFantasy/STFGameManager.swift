@@ -15,5 +15,8 @@ class STFGameManager: NSObject {
     var sewerExplore = 0;
     
     var maxExplore = 20;
+    
+    var playerWeapons = ["pistol"];
+    var playerArmor = ["light"];
 
 }
