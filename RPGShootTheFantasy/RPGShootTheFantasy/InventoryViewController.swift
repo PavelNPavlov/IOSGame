@@ -43,7 +43,8 @@ class InventoryViewController: UIViewController {
         }
         if(armors.count>0){
             self.armour.image = UIImage(named: armors[currentArmor]);
-        }    }
+        }
+    }
     
     func getItems(){
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -88,6 +89,21 @@ class InventoryViewController: UIViewController {
         }
     }
 
+    @IBAction func equip(sender: AnyObject) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let player = appDelegate.gameManager.player;
+        let itemFactory = appDelegate.gameManager.itemFactory;
+        
+        let armor = itemFactory.makeArmor(armors[currentArmor]);
+        let weapon = itemFactory.makeWeapon(weapons[currentWeapon]);
+        
+        player.weapon = weapon;
+        player.armour = armor;
+        
+        self.navigationController?.popViewControllerAnimated(true);
+        
+        
+    }
     /*
     // MARK: - Navigation
 

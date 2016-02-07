@@ -12,8 +12,8 @@ class STFPlayer: STFGameCharacter {
     
     var weapon: STFItem;
     var armour: STFItem;
-    var weapons: [String] = [];
-    var armors: [String] = [];
+    var weapons: [String] = ["pistol"];
+    var armors: [String] = ["light"];
     var level: Int;
     
     override init() {       

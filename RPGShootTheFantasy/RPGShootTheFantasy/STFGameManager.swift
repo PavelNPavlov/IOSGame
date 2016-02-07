@@ -16,9 +16,7 @@ class STFGameManager: NSObject {
     
     var maxExplore = 20;
     
-    var playerWeapons = ["pistol"];
-    var playerArmor = ["light"];
-    
     var player = STFPlayer();
+    var itemFactory = STFItemFactory();
 
 }
