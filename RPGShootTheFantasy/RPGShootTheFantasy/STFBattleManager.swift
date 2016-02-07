@@ -10,4 +10,8 @@ import UIKit
 
 class STFBattleManager: NSObject {
 
+    var enemyCount = 3;
+    var isPlayerTurn = true;
+    var isEnemyTurn = false;
+    var currentEnemyInTurn = 1;
 }

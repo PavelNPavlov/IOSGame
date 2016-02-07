@@ -12,12 +12,13 @@ class STFPlayer: STFGameCharacter {
     
     var weapon: STFItem;
     var armour: STFItem;
+    var level: Int;
     
     override init() {       
         
         self.weapon = STFItem();
         self.armour = STFItem();
-        
+        self.level = 1;
         super.init();
         
         self.attStats = STGAttackStats(withCut: 0, andBlunt: 10, andShot: 0, andMagic: 0, andExplosive: 0);

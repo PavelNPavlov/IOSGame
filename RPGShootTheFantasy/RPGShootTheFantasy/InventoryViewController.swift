@@ -14,8 +14,8 @@ class InventoryViewController: UIViewController {
     @IBOutlet weak var weapon: UIImageView!
     @IBOutlet weak var armour: UIImageView!
     
-    var weapons = ["pistol","rifle","assaultRifle","shotgun"];
-    var armors = ["light","medium","heavy"];
+    var weapons: [String]!;
+    var armors: [String]!;
     
     var currentWeapon = 0;
     var currentArmor = 0;

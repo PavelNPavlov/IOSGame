@@ -16,9 +16,11 @@ class FightScene: SKScene {
     let ork = "ork";
     let skeleton = "skeleton";
     
-    let skeletonFrameCount = [8,4,3];
+    let playerTurn = "Player Turn";
+    let enemyTurn = "Enemy Turn";
     
-    var object : SKSpriteNode!;
+    let skeletonFrameCount = [8,4,3];
+
     var location: String!;
     var atlasName: String!;
     var idleAnimationFrames: [SKTexture]!;
@@ -27,10 +29,17 @@ class FightScene: SKScene {
     var animSeparation: [Int]!;
     var enemies: [SKSpriteNode] = [];
     var eHealth: [SKLabelNode] = [];
+    var turnIndicator: SKLabelNode!;
     var enemyLocations: [CGPoint]!;
     var attackIndicator: SKSpriteNode!;
     var gestureArea: SKSpriteNode!;
     var indicatedIndex: Int = 0;
+    var battleManger: STFBattleManager = STFBattleManager();
+    var enemyActionInProgress = false;
+    
+    var skeletonPower = STGAttackStats(withCut: 20, andBlunt: 10, andShot: 0, andMagic: 0, andExplosive: 0);
+    var skeletonDef = STGDefenceStats(withCut: 30, andBlunt: 0, andShot: 10, andMagic: 0, andExplosive: 0);
+    var playerPower = STGAttackStats(withCut: 40, andBlunt: 10, andShot: 20, andMagic: 0, andExplosive: 10);
     
     override func didMoveToView(view: SKView) {
         
@@ -55,6 +64,10 @@ class FightScene: SKScene {
         }
         
         let animateAtlas = SKTextureAtlas(named: self.atlasName);
+        
+        turnIndicator = SKLabelNode(text: self.playerTurn);
+        turnIndicator.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMaxY(self.frame)-100);
+        addChild(turnIndicator);
         
         //init temp
         
@@ -113,6 +126,14 @@ class FightScene: SKScene {
         
         
         addChild(gestureArea);
+        
+        
+    }
+    
+    func endPlayerTurn(){
+        battleManger.isEnemyTurn = true;
+        battleManger.currentEnemyInTurn = 0;
+        battleManger.isPlayerTurn = false;
     }
     
     func handlePinch(recognizer: UIPinchGestureRecognizer) {
@@ -120,7 +141,7 @@ class FightScene: SKScene {
         if(recognizer.state != .Ended){
             return;
         }
-        
+      
         print("Pinch");
         var touchLocation = recognizer.locationInView(recognizer.view)
         touchLocation = self.convertPointFromView(touchLocation)
@@ -136,12 +157,19 @@ class FightScene: SKScene {
             return;
         }
         
+        if(battleManger.isPlayerTurn == false){
+            return;
+        }
+        
         var touchLocation = recognizer.locationInView(recognizer.view)
         touchLocation = self.convertPointFromView(touchLocation)
         let node = self.nodeAtPoint(touchLocation);
 
         if(node.name == "command"){
             print("swipe");
+            
+            eHealth[indicatedIndex].text = String(Int(eHealth[indicatedIndex].text!)! - Int(self.playerPower.explosiveAttack-self.skeletonDef.explosiveDefence));
+            self.endPlayerTurn();
         }
     }
     
@@ -206,30 +234,33 @@ class FightScene: SKScene {
         
     }
     
-    //startAnimation
-    
-    func animateAttack() {
-        object.runAction(SKAction.animateWithTextures(self.attackAnimationFrames,
-                timePerFrame: 0.2,
-                resize: false,
-                restore: true));
-    }
-    
-    func animateDmg() {
-        object.runAction(SKAction.animateWithTextures(self.idleAnimationFrames,
-            timePerFrame: 0.2,
+
+    func animateDmg(node: SKSpriteNode) {
+        node.removeAllActions();
+        node.runAction(SKAction.animateWithTextures(
+            self.takeDmgAnimationFrames,
+            timePerFrame: 0.25,
             resize: false,
-            restore: true));
+            restore: true),
+            completion:{
+                self.addAnimationToObj(node);
+        })
+
     }
     
     
-    func animateIdle() {
-        object.runAction(SKAction.repeatActionForever(
-            SKAction.animateWithTextures(self.idleAnimationFrames,
-                timePerFrame: 0.2,
-                resize: false,
-                restore: true)),
-            withKey:"animationMain")
+    func animateAttack(node: SKSpriteNode) {
+        enemyActionInProgress = true;
+        node.removeAllActions();
+        node.runAction(SKAction.animateWithTextures(
+            self.attackAnimationFrames,
+            timePerFrame: 0.25,
+            resize: false,
+            restore: true),
+            completion:{
+                self.addAnimationToObj(node);
+                self.enemyActionInProgress = false;
+            })
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -257,14 +288,29 @@ class FightScene: SKScene {
         
         attackIndicator.position.y = attackIndicator.position.y + 50;
         
-        var healt = Int(eHealth[indicatedIndex].text!)!;
-        healt = healt - 10;
-        
-        eHealth[indicatedIndex].text = String(healt);
+        battleManger.currentEnemyInTurn = 0;
 
     }
    
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+
+        //update turn indicator
+        if(battleManger.isPlayerTurn && self.enemyActionInProgress == false){
+            self.turnIndicator.text = playerTurn;
+        }
+        else
+        {
+            self.turnIndicator.text = enemyTurn
+        }
+        
+        if(enemyActionInProgress == false && battleManger.isEnemyTurn == true){
+            self.animateAttack(enemies[battleManger.currentEnemyInTurn]);
+            
+            battleManger.currentEnemyInTurn++;
+            if(battleManger.currentEnemyInTurn >= enemies.count){
+                battleManger.isEnemyTurn = false;
+                battleManger.isPlayerTurn = true;
+            }
+        }
     }
 }
