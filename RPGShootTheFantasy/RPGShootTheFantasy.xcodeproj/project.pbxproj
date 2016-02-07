@@ -13,6 +13,7 @@
 		E3BEEBEA1C65FC4800D8BC0C /* skeleton.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E3BEEBE91C65FC4800D8BC0C /* skeleton.atlas */; };
 		E3BEEBEC1C662AB200D8BC0C /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BEEBEB1C662AB200D8BC0C /* InventoryViewController.swift */; };
 		E3BEEBEE1C67A86F00D8BC0C /* STFItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BEEBED1C67A86F00D8BC0C /* STFItemFactory.swift */; };
+		E3BEEBF01C67B32E00D8BC0C /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BEEBEF1C67B32E00D8BC0C /* AboutViewController.swift */; };
 		E3FADDB81C61FFEC00AE2E12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDB71C61FFEC00AE2E12 /* AppDelegate.swift */; };
 		E3FADDBC1C61FFEC00AE2E12 /* FightScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDBB1C61FFEC00AE2E12 /* FightScene.swift */; };
 		E3FADDBE1C61FFEC00AE2E12 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDBD1C61FFEC00AE2E12 /* GameViewController.swift */; };
@@ -58,6 +59,7 @@
 		E3BEEBE91C65FC4800D8BC0C /* skeleton.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = skeleton.atlas; sourceTree = "<group>"; };
 		E3BEEBEB1C662AB200D8BC0C /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		E3BEEBED1C67A86F00D8BC0C /* STFItemFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STFItemFactory.swift; sourceTree = "<group>"; };
+		E3BEEBEF1C67B32E00D8BC0C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E3FADDB41C61FFEC00AE2E12 /* RPGShootTheFantasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RPGShootTheFantasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3FADDB71C61FFEC00AE2E12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3FADDBB1C61FFEC00AE2E12 /* FightScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightScene.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				E3FADE011C6236C600AE2E12 /* MenuViewController.swift */,
 				E3BEEBE21C65E1E700D8BC0C /* ExplorationViewController.swift */,
 				E3BEEBEB1C662AB200D8BC0C /* InventoryViewController.swift */,
+				E3BEEBEF1C67B32E00D8BC0C /* AboutViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				E3FADDFC1C622AB000AE2E12 /* STGDefenceStats.swift in Sources */,
 				E3FADDF31C6201B200AE2E12 /* STFEnemy.swift in Sources */,
 				E3FADDFE1C622DF300AE2E12 /* STGAttackStats.swift in Sources */,
+				E3BEEBF01C67B32E00D8BC0C /* AboutViewController.swift in Sources */,
 				E3FADDBE1C61FFEC00AE2E12 /* GameViewController.swift in Sources */,
 				E3BEEBEE1C67A86F00D8BC0C /* STFItemFactory.swift in Sources */,
 				E3FADDB81C61FFEC00AE2E12 /* AppDelegate.swift in Sources */,

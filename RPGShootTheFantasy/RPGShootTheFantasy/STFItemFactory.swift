@@ -34,19 +34,20 @@ class STFItemFactory: NSObject {
     }
     
     func makeArmor(name: String) -> STFItem{
+        
         var defValue: STGDefenceStats = STGDefenceStats();
         switch name{
-        case "light":
-            defValue = STGDefenceStats(withCut: 20, andBlunt: 20, andShot: 20, andMagic: 50, andExplosive: 50);
-            break;
-        case "medium":
-            defValue = STGDefenceStats(withCut: 30, andBlunt: 30, andShot: 40, andMagic: 40, andExplosive: 30);
-            break;
-        case "heavy":
-            defValue = STGDefenceStats(withCut: 50, andBlunt: 50, andShot: 50, andMagic: 30, andExplosive: 20);
-            break;
-        default:
-            break;
+            case "light":
+                defValue = STGDefenceStats(withCut: 20, andBlunt: 20, andShot: 20, andMagic: 50, andExplosive: 50);
+                break;
+            case "medium":
+                defValue = STGDefenceStats(withCut: 30, andBlunt: 30, andShot: 40, andMagic: 40, andExplosive: 30);
+                break;
+            case "heavy":
+                defValue = STGDefenceStats(withCut: 50, andBlunt: 50, andShot: 50, andMagic: 30, andExplosive: 20);
+                break;
+            default:
+                break;
         }
         
         return STFItem(withAttValue: STGAttackStats(), andDeffValue: defValue);

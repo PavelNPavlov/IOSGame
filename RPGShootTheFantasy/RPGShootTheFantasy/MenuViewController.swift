@@ -42,6 +42,11 @@ class MenuViewController: UIViewController {
     }
     @IBAction func about(sender: AnyObject) {
         print("About");
+        let id = "aboutVC";
+        
+        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(id);
+        self.navigationController?.pushViewController(viewController!, animated: true);
+
     }
     @IBAction func restore(sender: AnyObject) {
         print("Restore");

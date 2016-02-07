@@ -7,6 +7,52 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--About View Controller-->
+        <scene sceneID="MFK-yg-fc7">
+            <objects>
+                <viewController storyboardIdentifier="aboutVC" id="Hla-4E-CQT" customClass="AboutViewController" customModule="RPGShootTheFantasy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3eE-H0-Lfp"/>
+                        <viewControllerLayoutGuide type="bottom" id="8i6-N4-JFE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xNH-15-bhv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a game that strives to be a simplifed rpg game amied at mobile devices" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVy-Z1-MKG">
+                                <rect key="frame" x="20" y="170" width="560" height="330"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUw-qi-XVj">
+                                <rect key="frame" x="20" y="46" width="560" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="Jef-4i-KNu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.77643024650000003" green="0.77643024650000003" blue="0.77643024650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="2" height="2"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.32156862749999998" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="KVy-Z1-MKG" firstAttribute="trailing" secondItem="rUw-qi-XVj" secondAttribute="trailing" id="3OR-SJ-qZv"/>
+                            <constraint firstItem="rUw-qi-XVj" firstAttribute="top" secondItem="3eE-H0-Lfp" secondAttribute="bottom" constant="26" id="776-p2-5m1"/>
+                            <constraint firstItem="KVy-Z1-MKG" firstAttribute="top" secondItem="rUw-qi-XVj" secondAttribute="bottom" constant="66" id="Uup-J2-ze3"/>
+                            <constraint firstItem="KVy-Z1-MKG" firstAttribute="leading" secondItem="rUw-qi-XVj" secondAttribute="leading" id="YaF-Vm-ybA"/>
+                            <constraint firstItem="rUw-qi-XVj" firstAttribute="trailing" secondItem="xNH-15-bhv" secondAttribute="trailingMargin" id="djK-T2-j4T"/>
+                            <constraint firstItem="KVy-Z1-MKG" firstAttribute="leading" secondItem="xNH-15-bhv" secondAttribute="leadingMargin" id="jBj-x6-ZjW"/>
+                            <constraint firstItem="8i6-N4-JFE" firstAttribute="top" secondItem="KVy-Z1-MKG" secondAttribute="bottom" constant="100" id="yaj-ND-r6h"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g8k-A0-R8t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="713" y="-701"/>
+        </scene>
         <!--Menu-->
         <scene sceneID="TLL-Vq-aLk">
             <objects>
@@ -289,9 +335,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ssz-VU-iPM">
                                 <rect key="frame" x="101" y="70" width="399" height="176"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mqo-ET-Y1O">
-                                <rect key="frame" x="101" y="350" width="399" height="176"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaz-gT-zUk">
                                 <rect key="frame" x="508" y="143" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.77643024650000003" green="0.77643024650000003" blue="0.77643024650000003" alpha="0.31986923760000002" colorSpace="calibratedRGB"/>
@@ -322,35 +365,6 @@
                                     <action selector="prevWeapon:" destination="ln8-Bb-txV" eventType="touchUpInside" id="l4s-PI-Nyn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0F-rl-yTy">
-                                <rect key="frame" x="508" y="423" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.77643024650000003" green="0.77643024650000003" blue="0.77643024650000003" alpha="0.31986923760000002" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="17"/>
-                                <size key="titleShadowOffset" width="2" height="2"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextArmor:" destination="ln8-Bb-txV" eventType="touchUpInside" id="oQM-rx-Rms"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hfw-0e-RR6">
-                                <rect key="frame" x="47" y="423" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.77643024650000003" green="0.77643024650000003" blue="0.77643024650000003" alpha="0.31986923760000002" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Fbx-UE-h7E"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="17"/>
-                                <size key="titleShadowOffset" width="2" height="2"/>
-                                <state key="normal" title="Prev">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="prevArmor:" destination="ln8-Bb-txV" eventType="touchUpInside" id="VpM-xd-hQ3"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foK-Km-jcg">
                                 <rect key="frame" x="183" y="534" width="235" height="32"/>
                                 <color key="backgroundColor" red="0.77643024650000003" green="0.77643024650000003" blue="0.77643024650000003" alpha="0.31986923760000002" colorSpace="calibratedRGB"/>
@@ -368,6 +382,38 @@
                                     <action selector="equip:" destination="ln8-Bb-txV" eventType="touchUpInside" id="i34-Lv-RTi"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mqo-ET-Y1O">
+                                <rect key="frame" x="101" y="299" width="399" height="176"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0F-rl-yTy">
+                                <rect key="frame" x="508" y="372" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.77643024650000003" green="0.77643024650000003" blue="0.77643024650000003" alpha="0.31986923760000002" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="17"/>
+                                <size key="titleShadowOffset" width="2" height="2"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextArmor:" destination="ln8-Bb-txV" eventType="touchUpInside" id="oQM-rx-Rms"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hfw-0e-RR6">
+                                <rect key="frame" x="47" y="372" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.77643024650000003" green="0.77643024650000003" blue="0.77643024650000003" alpha="0.31986923760000002" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Fbx-UE-h7E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="17"/>
+                                <size key="titleShadowOffset" width="2" height="2"/>
+                                <state key="normal" title="Prev">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="prevArmor:" destination="ln8-Bb-txV" eventType="touchUpInside" id="VpM-xd-hQ3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.32156862749999998" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -375,7 +421,7 @@
                             <constraint firstItem="ZQH-z6-3un" firstAttribute="top" secondItem="VXu-ub-Fq9" secondAttribute="bottom" constant="123" id="0dg-oG-i4V"/>
                             <constraint firstItem="x0F-rl-yTy" firstAttribute="leading" secondItem="mqo-ET-Y1O" secondAttribute="trailing" constant="8" symbolic="YES" id="0f6-xc-MCp"/>
                             <constraint firstItem="ZQH-z6-3un" firstAttribute="top" secondItem="gaz-gT-zUk" secondAttribute="top" id="2ib-KZ-8bF"/>
-                            <constraint firstItem="YJR-XO-TW5" firstAttribute="top" secondItem="Hfw-0e-RR6" secondAttribute="bottom" constant="147" id="7nI-ZB-JWD"/>
+                            <constraint firstItem="YJR-XO-TW5" firstAttribute="top" secondItem="Hfw-0e-RR6" secondAttribute="bottom" constant="198" id="7nI-ZB-JWD"/>
                             <constraint firstItem="gaz-gT-zUk" firstAttribute="leading" secondItem="ssz-VU-iPM" secondAttribute="trailing" constant="8" symbolic="YES" id="DFR-3n-Tuq"/>
                             <constraint firstItem="Hfw-0e-RR6" firstAttribute="top" secondItem="x0F-rl-yTy" secondAttribute="top" id="E64-Na-iBK"/>
                             <constraint firstItem="YJR-XO-TW5" firstAttribute="top" secondItem="foK-Km-jcg" secondAttribute="bottom" constant="34" id="FM2-fB-ZGO"/>
@@ -391,7 +437,7 @@
                             <constraint firstItem="mqo-ET-Y1O" firstAttribute="centerY" secondItem="Hfw-0e-RR6" secondAttribute="centerY" id="ctF-tP-9sS"/>
                             <constraint firstItem="gaz-gT-zUk" firstAttribute="bottom" secondItem="ZQH-z6-3un" secondAttribute="bottom" id="fIm-HS-UJY"/>
                             <constraint firstItem="mqo-ET-Y1O" firstAttribute="leading" secondItem="Hfw-0e-RR6" secondAttribute="trailing" constant="8" symbolic="YES" id="hTX-Hx-Y1i"/>
-                            <constraint firstItem="foK-Km-jcg" firstAttribute="top" secondItem="mqo-ET-Y1O" secondAttribute="bottom" constant="8" symbolic="YES" id="mcs-lt-ubw"/>
+                            <constraint firstItem="foK-Km-jcg" firstAttribute="top" secondItem="mqo-ET-Y1O" secondAttribute="bottom" constant="59" id="mcs-lt-ubw"/>
                             <constraint firstItem="foK-Km-jcg" firstAttribute="centerX" secondItem="mqo-ET-Y1O" secondAttribute="centerX" id="mlN-Kf-zbC"/>
                             <constraint firstItem="gaz-gT-zUk" firstAttribute="firstBaseline" secondItem="ZQH-z6-3un" secondAttribute="firstBaseline" id="nDk-bo-yYT"/>
                             <constraint firstItem="ssz-VU-iPM" firstAttribute="leading" secondItem="ZQH-z6-3un" secondAttribute="trailing" constant="8" symbolic="YES" id="olZ-Ic-ZsH"/>
