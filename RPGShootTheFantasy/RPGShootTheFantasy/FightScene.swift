@@ -147,6 +147,16 @@ class FightScene: SKScene {
         let gestureRecognizerPinch = UIPinchGestureRecognizer(target: self, action: Selector("handlePinch:"))
         self.view!.addGestureRecognizer(gestureRecognizerPinch)
         
+        let gesturRecogRotate = UIRotationGestureRecognizer(target: self, action: Selector("handleRotate:"))
+        self.view!.addGestureRecognizer(gesturRecogRotate)
+        
+        let gesturRecogLong = UILongPressGestureRecognizer(target: self, action: Selector("handleLong:"))
+        self.view!.addGestureRecognizer(gesturRecogLong)
+        
+        let gesturePan = UIPanGestureRecognizer(target: self, action: Selector("handlePan:"))
+        self.view!.addGestureRecognizer(gesturePan)
+
+        
         
         
         gestureArea = SKSpriteNode(imageNamed: "gesture2");
@@ -184,6 +194,89 @@ class FightScene: SKScene {
         battleManger.isPlayerTurn = false;
         self.animateDmg(enemies[indicatedIndex]);
     }
+    func handlePan(recognizer: UIPanGestureRecognizer) {
+        
+        if(recognizer.state != .Ended){
+            return;
+        }
+        
+        print("Pan");
+        var touchLocation = recognizer.locationInView(recognizer.view)
+        touchLocation = self.convertPointFromView(touchLocation)
+        let node = self.nodeAtPoint(touchLocation);
+        
+        if(node.name == "command"){
+            print("rotate");
+            
+            
+            let dmg = Int(self.player.getAttack().cutAttack - self.skeletonDef.cutDefence);
+            if(dmg>0){
+                eHealth[indicatedIndex].text = String(Int(eHealth[indicatedIndex].text!)! - dmg);
+            }
+            if(Int(eHealth[indicatedIndex].text!)<=0){
+                remainingEnemies--;
+            }
+            
+            self.endPlayerTurn();
+        }
+    }
+
+    
+    
+    func handleRotate(recognizer: UIRotationGestureRecognizer) {
+        
+        if(recognizer.state != .Ended){
+            return;
+        }
+        
+        print("Pinch");
+        var touchLocation = recognizer.locationInView(recognizer.view)
+        touchLocation = self.convertPointFromView(touchLocation)
+        let node = self.nodeAtPoint(touchLocation);
+        
+        if(node.name == "command"){
+            print("rotate");
+            
+            
+            let dmg = Int(self.player.getAttack().shotAttack - self.skeletonDef.shotDefence);
+            if(dmg>0){
+                eHealth[indicatedIndex].text = String(Int(eHealth[indicatedIndex].text!)! - dmg);
+            }
+            if(Int(eHealth[indicatedIndex].text!)<=0){
+                remainingEnemies--;
+            }
+            
+            self.endPlayerTurn();
+        }
+    }
+    
+    func handleRhandleLongtate(recognizer: UILongPressGestureRecognizer) {
+        
+        if(recognizer.state != .Ended){
+            return;
+        }
+        
+        print("Long");
+        var touchLocation = recognizer.locationInView(recognizer.view)
+        touchLocation = self.convertPointFromView(touchLocation)
+        let node = self.nodeAtPoint(touchLocation);
+        
+        if(node.name == "command"){
+            print("rotate");
+            
+            
+            let dmg = Int(self.player.getAttack().bluntAttack - self.skeletonDef.bluntDefence);
+            if(dmg>0){
+                eHealth[indicatedIndex].text = String(Int(eHealth[indicatedIndex].text!)! - dmg);
+            }
+            if(Int(eHealth[indicatedIndex].text!)<=0){
+                remainingEnemies--;
+            }
+            
+            self.endPlayerTurn();
+        }
+    }
+
     
     func handlePinch(recognizer: UIPinchGestureRecognizer) {
         
@@ -191,7 +284,7 @@ class FightScene: SKScene {
             return;
         }
       
-        print("Pinch");
+        print("Rotate");
         var touchLocation = recognizer.locationInView(recognizer.view)
         touchLocation = self.convertPointFromView(touchLocation)
         let node = self.nodeAtPoint(touchLocation);
