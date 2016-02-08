@@ -8,6 +8,7 @@
 
 import SpriteKit
 import AVFoundation
+import CoreMotion
 
 class FightScene: SKScene {
     
@@ -45,6 +46,7 @@ class FightScene: SKScene {
     var backgroundImageName: String!;
     var remainingEnemies = 3;
     var scaleS = 1.0;
+    var motionManager = CMMotionManager();
     
     //sound effects
     var enemyAttack: AVAudioPlayer!;
@@ -166,7 +168,25 @@ class FightScene: SKScene {
         
         addChild(gestureArea);
         
+        self.SetUpAccel();
         
+        
+    }
+    
+    func SetUpAccel(){
+        if (motionManager.accelerometerAvailable == true) {
+            // 2
+            motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue()!, withHandler:{
+                data, error in
+                
+                // 3
+                if ((data!.acceleration.x + data!.acceleration.y + data!.acceleration.z) < 0) {
+                    self.navigation.popViewControllerAnimated(true)
+                }
+                
+            })
+            
+        }
     }
     
     func setUpAudio(){
@@ -189,14 +209,14 @@ class FightScene: SKScene {
         addChild(background);
     }
     
-    func endPlayerTurn(){
-        battleManger.currentEnemyInTurn = 0;
-        battleManger.isPlayerTurn = false;
-        self.animateDmg(enemies[indicatedIndex]);
-    }
+   
     func handlePan(recognizer: UIPanGestureRecognizer) {
         
         if(recognizer.state != .Ended){
+            return;
+        }
+        
+        if(battleManger.isPlayerTurn == false){
             return;
         }
         
@@ -229,6 +249,10 @@ class FightScene: SKScene {
             return;
         }
         
+        if(battleManger.isPlayerTurn == false){
+            return;
+        }
+        
         print("Pinch");
         var touchLocation = recognizer.locationInView(recognizer.view)
         touchLocation = self.convertPointFromView(touchLocation)
@@ -253,6 +277,10 @@ class FightScene: SKScene {
     func handleRhandleLongtate(recognizer: UILongPressGestureRecognizer) {
         
         if(recognizer.state != .Ended){
+            return;
+        }
+        
+        if(battleManger.isPlayerTurn == false){
             return;
         }
         
@@ -281,6 +309,10 @@ class FightScene: SKScene {
     func handlePinch(recognizer: UIPinchGestureRecognizer) {
         
         if(recognizer.state != .Ended){
+            return;
+        }
+        
+        if(battleManger.isPlayerTurn == false){
             return;
         }
       
@@ -335,6 +367,12 @@ class FightScene: SKScene {
             
             self.endPlayerTurn();
         }
+    }
+    
+    func endPlayerTurn(){
+        battleManger.currentEnemyInTurn = 0;
+        battleManger.isPlayerTurn = false;
+        self.animateDmg(enemies[indicatedIndex]);
     }
     
     func makeEnemies(count: Int){

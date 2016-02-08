@@ -50,6 +50,23 @@ class InventoryViewController: UIViewController {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let gameManager = appDelegate.gameManager;
         
+        if(gameManager.player.level == 10 && gameManager.player.weapons.count<2){
+            gameManager.player.weapons.append("assaultRifle")
+        }
+        
+        if(gameManager.player.level == 15 && gameManager.player.armors.count<2){
+            gameManager.player.armors.append("medium")
+        }
+        
+        if(gameManager.player.level == 40 && gameManager.player.weapons.count<3){
+            gameManager.player.weapons.append("rifle")
+        }
+        
+        if(gameManager.player.level == 50 && gameManager.player.weapons.count<4){
+            gameManager.player.weapons.append("shotgun")
+            gameManager.player.armors.append("heavy")
+        }
+        
         weapons = gameManager.player.weapons
         armors = gameManager.player.armors
     }
