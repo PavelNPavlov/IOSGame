@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Hey listen</string>
+	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Hey listen</string>
 	<key>CFBundleGetInfoString</key>

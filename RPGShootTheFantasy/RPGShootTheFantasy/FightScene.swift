@@ -21,6 +21,8 @@ class FightScene: SKScene {
     let enemyTurn = "Enemy Turn";
     
     let skeletonFrameCount = [8,4,3];
+    let orkFrameCount = [4,4,2];
+    let wizardFrameCount = [3,3,2];
 
     var location: String!;
     var atlasName: String!;
@@ -39,6 +41,8 @@ class FightScene: SKScene {
     var enemyActionInProgress = false;
     var player: STFPlayer!;
     var backgroundImageName: String!;
+    var remainingEnemies = 3;
+    var scaleS = 1.0;
     
     //sound effects
     var enemyAttack: AVAudioPlayer!;
@@ -62,9 +66,12 @@ class FightScene: SKScene {
         switch location{
         case "forest":
             self.atlasName = ork;
+            animSeparation = orkFrameCount;
+            scaleS = 0.75;
             break;
         case "dungeon":
             self.atlasName = wizard;
+            animSeparation = wizardFrameCount;
             break;
         case "sewer":
             self.atlasName = skeleton
@@ -183,7 +190,15 @@ class FightScene: SKScene {
         if(node.name == "command"){
             print("pinch");
             
-            eHealth[indicatedIndex].text = String(Int(eHealth[indicatedIndex].text!)! - Int(self.player.getAttack().magicAttack - self.skeletonDef.magicDefence));
+            
+            let dmg = Int(eHealth[indicatedIndex].text!)! - Int(self.player.getAttack().magicAttack - self.skeletonDef.magicDefence);
+            if(dmg>0){
+                eHealth[indicatedIndex].text = String(dmg);
+            }
+            if(Int(eHealth[indicatedIndex].text!)<=0){
+                remainingEnemies--;
+            }
+
             self.endPlayerTurn();
         }
     }
@@ -210,6 +225,10 @@ class FightScene: SKScene {
             if(dmg>0){
                 eHealth[indicatedIndex].text = String(Int(eHealth[indicatedIndex].text!)! - dmg);
             }
+            
+            if(Int(eHealth[indicatedIndex].text!)<=0){
+                remainingEnemies--;
+            }
         
             
             self.endPlayerTurn();
@@ -225,16 +244,19 @@ class FightScene: SKScene {
         let enemy1 = SKSpriteNode(texture: firstFrame);
         enemy1.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame)+100);
         enemy1.name = "e1";
+        enemy1.setScale(CGFloat(scaleS))
 
         
         
         let enemy2 = SKSpriteNode(texture: firstFrame);
         enemy2.position = CGPoint(x: CGRectGetMidX(self.frame)+100, y: CGRectGetMidY(self.frame));
         enemy2.name = "e2";
+         enemy2.setScale(CGFloat(scaleS))
 //        
         let enemy3 = SKSpriteNode(texture: firstFrame);
         enemy3.position = CGPoint(x: CGRectGetMidX(self.frame)-100, y: CGRectGetMidY(self.frame));
         enemy3.name = "e3";
+         enemy3.setScale(CGFloat(scaleS))
         
         
         let eHealth1 = SKLabelNode(text: "100");
@@ -353,13 +375,17 @@ class FightScene: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
 
+        if(remainingEnemies==0){
+            print("GameOver");
+            return
+        }
         var i: Int;
         for i=0; i<enemies.count; ++i{
             if(Int(eHealth[i].text!)!<=0){
                 
                 self.removeChildrenInArray([enemies[i]]);
                 self.removeChildrenInArray([eHealth[i]]);
-                //enemies.removeAtIndex(i);
+                                //enemies.removeAtIndex(i);
                 //eHealth.removeAtIndex(i);
             
             }
@@ -374,7 +400,10 @@ class FightScene: SKScene {
         }
         
         if(enemyActionInProgress == false && battleManger.isEnemyTurn == true){
-            self.animateAttack(enemies[battleManger.currentEnemyInTurn]);
+            
+            if(enemies[battleManger.currentEnemyInTurn].parent != nil){
+                self.animateAttack(enemies[battleManger.currentEnemyInTurn]);
+            }
             
             battleManger.currentEnemyInTurn++;
             if(battleManger.currentEnemyInTurn >= enemies.count){
