@@ -15,6 +15,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true;
 
         let scene = FightScene(size: view.bounds.size)
         scene.location = self.fightLocation;
