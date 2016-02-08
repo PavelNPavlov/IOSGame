@@ -13,10 +13,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var gameManager = STFGameManager();
+    var deviceId: String!;
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        return true
+        Parse.enableLocalDatastore()
+        
+        // Initialize Parse.
+        Parse.setApplicationId("UcI0ca8lLWkc6JjQqNeRA5klwZu70scsCDKBq6iI",
+            clientKey: "p7Sn42EOBjsll8z8ULgAyVt7AQ1RDEOzswzTmSvB")
+        
+        
+        deviceId = UIDevice.currentDevice().identifierForVendor!.UUIDString
+        
+        let query = PFQuery(className: "Player");
+        
+            let result = query.whereKey("DeviceID", equalTo: deviceId).getFirstObjectInBackgroundWithBlock({ (obj: PFObject?, err: NSError?) -> Void in
+                if((err) != nil){
+                    let objN = PFObject(className: "Player");
+                    objN["DeviceID"] = self.deviceId;
+                    objN["Level"] = 1;
+                    objN["Weapons"] = "pistol"
+                    objN["Armors"] = "light"
+                    
+                    objN.saveInBackground();
+                }
+                else{
+                    let player = self.gameManager.player;
+                    
+                    player.level = ob
+                }
+            });
+
+
+      
+        
+                return true
     }
 
     func applicationWillResignActive(application: UIApplication) {

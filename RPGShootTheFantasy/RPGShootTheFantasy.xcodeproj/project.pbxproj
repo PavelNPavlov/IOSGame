@@ -17,6 +17,17 @@
 		E3BEEBF21C67DDDB00D8BC0C /* skeletonAttack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E3BEEBF11C67DDDB00D8BC0C /* skeletonAttack.mp3 */; };
 		E3BEEBF41C6803BE00D8BC0C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BEEBF31C6803BE00D8BC0C /* CoreLocation.framework */; };
 		E3BEEBF81C68081700D8BC0C /* AboutViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BEEBF71C68081700D8BC0C /* AboutViewController1.m */; };
+		E3BEEBFB1C681F5F00D8BC0C /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BEEBF91C681F5F00D8BC0C /* Bolts.framework */; };
+		E3BEEBFC1C681F5F00D8BC0C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BEEBFA1C681F5F00D8BC0C /* Parse.framework */; };
+		E3BEEBFE1C681FB700D8BC0C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BEEBFD1C681FB700D8BC0C /* AudioToolbox.framework */; };
+		E3BEEC001C681FBF00D8BC0C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BEEBFF1C681FBF00D8BC0C /* CFNetwork.framework */; };
+		E3BEEC021C681FD000D8BC0C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BEEC011C681FD000D8BC0C /* CoreGraphics.framework */; };
+		E3BEEC041C681FD900D8BC0C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BEEC031C681FD900D8BC0C /* QuartzCore.framework */; };
+		E3BEEC061C681FE300D8BC0C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BEEC051C681FE300D8BC0C /* Security.framework */; };
+		E3BEEC081C681FEE00D8BC0C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BEEC071C681FEE00D8BC0C /* StoreKit.framework */; };
+		E3BEEC0A1C681FF600D8BC0C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BEEC091C681FF600D8BC0C /* SystemConfiguration.framework */; };
+		E3BEEC0C1C681FFF00D8BC0C /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BEEC0B1C681FFF00D8BC0C /* libz.1.1.3.tbd */; };
+		E3BEEC0E1C68200900D8BC0C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E3BEEC0D1C68200900D8BC0C /* libsqlite3.tbd */; };
 		E3FADDB81C61FFEC00AE2E12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDB71C61FFEC00AE2E12 /* AppDelegate.swift */; };
 		E3FADDBC1C61FFEC00AE2E12 /* FightScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDBB1C61FFEC00AE2E12 /* FightScene.swift */; };
 		E3FADDBE1C61FFEC00AE2E12 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FADDBD1C61FFEC00AE2E12 /* GameViewController.swift */; };
@@ -68,6 +79,17 @@
 		E3BEEBF51C68081700D8BC0C /* RPGShootTheFantasy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RPGShootTheFantasy-Bridging-Header.h"; sourceTree = "<group>"; };
 		E3BEEBF61C68081700D8BC0C /* AboutViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController1.h; sourceTree = "<group>"; };
 		E3BEEBF71C68081700D8BC0C /* AboutViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController1.m; sourceTree = "<group>"; };
+		E3BEEBF91C681F5F00D8BC0C /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = RPGShootTheFantasy/Bolts.framework; sourceTree = "<group>"; };
+		E3BEEBFA1C681F5F00D8BC0C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = RPGShootTheFantasy/Parse.framework; sourceTree = "<group>"; };
+		E3BEEBFD1C681FB700D8BC0C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E3BEEBFF1C681FBF00D8BC0C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E3BEEC011C681FD000D8BC0C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E3BEEC031C681FD900D8BC0C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E3BEEC051C681FE300D8BC0C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		E3BEEC071C681FEE00D8BC0C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E3BEEC091C681FF600D8BC0C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E3BEEC0B1C681FFF00D8BC0C /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
+		E3BEEC0D1C68200900D8BC0C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		E3FADDB41C61FFEC00AE2E12 /* RPGShootTheFantasy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RPGShootTheFantasy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3FADDB71C61FFEC00AE2E12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3FADDBB1C61FFEC00AE2E12 /* FightScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightScene.swift; sourceTree = "<group>"; };
@@ -100,7 +122,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3BEEC0E1C68200900D8BC0C /* libsqlite3.tbd in Frameworks */,
+				E3BEEC0C1C681FFF00D8BC0C /* libz.1.1.3.tbd in Frameworks */,
+				E3BEEC0A1C681FF600D8BC0C /* SystemConfiguration.framework in Frameworks */,
+				E3BEEC081C681FEE00D8BC0C /* StoreKit.framework in Frameworks */,
+				E3BEEC061C681FE300D8BC0C /* Security.framework in Frameworks */,
+				E3BEEC041C681FD900D8BC0C /* QuartzCore.framework in Frameworks */,
+				E3BEEC021C681FD000D8BC0C /* CoreGraphics.framework in Frameworks */,
 				E3BEEBF41C6803BE00D8BC0C /* CoreLocation.framework in Frameworks */,
+				E3BEEC001C681FBF00D8BC0C /* CFNetwork.framework in Frameworks */,
+				E3BEEBFE1C681FB700D8BC0C /* AudioToolbox.framework in Frameworks */,
+				E3BEEBFB1C681F5F00D8BC0C /* Bolts.framework in Frameworks */,
+				E3BEEBFC1C681F5F00D8BC0C /* Parse.framework in Frameworks */,
 				E3BEEBE51C65EC1700D8BC0C /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,6 +167,17 @@
 		E3FADDAB1C61FFEC00AE2E12 = {
 			isa = PBXGroup;
 			children = (
+				E3BEEC0D1C68200900D8BC0C /* libsqlite3.tbd */,
+				E3BEEC0B1C681FFF00D8BC0C /* libz.1.1.3.tbd */,
+				E3BEEC091C681FF600D8BC0C /* SystemConfiguration.framework */,
+				E3BEEC071C681FEE00D8BC0C /* StoreKit.framework */,
+				E3BEEC051C681FE300D8BC0C /* Security.framework */,
+				E3BEEC031C681FD900D8BC0C /* QuartzCore.framework */,
+				E3BEEC011C681FD000D8BC0C /* CoreGraphics.framework */,
+				E3BEEBFF1C681FBF00D8BC0C /* CFNetwork.framework */,
+				E3BEEBFD1C681FB700D8BC0C /* AudioToolbox.framework */,
+				E3BEEBF91C681F5F00D8BC0C /* Bolts.framework */,
+				E3BEEBFA1C681F5F00D8BC0C /* Parse.framework */,
 				E3BEEBF31C6803BE00D8BC0C /* CoreLocation.framework */,
 				E3BEEBE41C65EC1700D8BC0C /* AVFoundation.framework */,
 				E3FADDB61C61FFEC00AE2E12 /* RPGShootTheFantasy */,
@@ -532,6 +576,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/RPGShootTheFantasy",
+				);
 				INFOPLIST_FILE = RPGShootTheFantasy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Project.RPGShootTheFantasy;
@@ -547,6 +595,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/RPGShootTheFantasy",
+				);
 				INFOPLIST_FILE = RPGShootTheFantasy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Project.RPGShootTheFantasy;
