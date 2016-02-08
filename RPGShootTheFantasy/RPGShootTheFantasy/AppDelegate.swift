@@ -40,8 +40,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 else{
                     let player = self.gameManager.player;
+                    //print(obj);
+                    print(obj!.valueForKey("Level")!);
+                    player.level = obj!.valueForKey("Level")! as! Int;
+                    let weapons = obj!.valueForKey("Weapons")!.componentsSeparatedByString(",");
+                    let armors = obj!.valueForKey("Armors")!.componentsSeparatedByString(",");
+                    player.weapons = weapons;
+                    player.armors = armors;
                     
-                    player.level = ob
+                    print("player recovred");
                 }
             });
 
