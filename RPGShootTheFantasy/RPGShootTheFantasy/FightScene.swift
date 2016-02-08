@@ -269,8 +269,11 @@ class FightScene: SKScene {
             if(Int(eHealth[indicatedIndex].text!)<=0){
                 remainingEnemies--;
             }
+            else{
+                enemyActionInProgress = false;
             
-            self.endPlayerTurn();
+                self.endPlayerTurn();
+            }
         }
     }
     
@@ -299,6 +302,7 @@ class FightScene: SKScene {
             }
             if(Int(eHealth[indicatedIndex].text!)<=0){
                 remainingEnemies--;
+                enemyActionInProgress = false;
             }
             
             self.endPlayerTurn();
@@ -316,7 +320,7 @@ class FightScene: SKScene {
             return;
         }
       
-        print("Rotate");
+        print("pinch");
         var touchLocation = recognizer.locationInView(recognizer.view)
         touchLocation = self.convertPointFromView(touchLocation)
         let node = self.nodeAtPoint(touchLocation);
@@ -372,6 +376,8 @@ class FightScene: SKScene {
     func endPlayerTurn(){
         battleManger.currentEnemyInTurn = 0;
         battleManger.isPlayerTurn = false;
+        battleManger.isEnemyTurn = true
+        enemyActionInProgress = false
         self.animateDmg(enemies[indicatedIndex]);
     }
     
