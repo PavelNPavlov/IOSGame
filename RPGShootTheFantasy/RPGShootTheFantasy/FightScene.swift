@@ -24,6 +24,7 @@ class FightScene: SKScene {
     let orkFrameCount = [4,4,2];
     let wizardFrameCount = [3,3,2];
 
+    var navigation: UINavigationController!;
     var location: String!;
     var atlasName: String!;
     var idleAnimationFrames: [SKTexture]!;
@@ -33,6 +34,7 @@ class FightScene: SKScene {
     var enemies: [SKSpriteNode] = [];
     var eHealth: [SKLabelNode] = [];
     var turnIndicator: SKLabelNode!;
+    var playerHealth: SKLabelNode!;
     var enemyLocations: [CGPoint]!;
     var attackIndicator: SKSpriteNode!;
     var gestureArea: SKSpriteNode!;
@@ -49,11 +51,12 @@ class FightScene: SKScene {
     var enemyHit: AVPlayer!;
     var bgMusic: AVPlayer!;
     
+    var navigated = false;
     var skeletonPower = STGAttackStats(withCut: 20, andBlunt: 20, andShot: 0, andMagic: 0, andExplosive: 0);
     var skeletonDef = STGDefenceStats(withCut: 30, andBlunt: 0, andShot: 10, andMagic: 0, andExplosive: 0);
     var gameManger: STFGameManager!;
     override func didMoveToView(view: SKView) {
-        
+      
         view.backgroundColor = UIColor.whiteColor();
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -88,6 +91,12 @@ class FightScene: SKScene {
         turnIndicator.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMaxY(self.frame)-100);
         turnIndicator.fontName = "PingFang SC Semibold" ;
         addChild(turnIndicator);
+        
+        playerHealth = SKLabelNode(text: String(player.health));
+        playerHealth.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMaxY(self.frame)-150);
+        playerHealth.fontName = "PingFang SC Semibold" ;
+        addChild(playerHealth);
+
         
         //init temp
         
@@ -191,9 +200,9 @@ class FightScene: SKScene {
             print("pinch");
             
             
-            let dmg = Int(eHealth[indicatedIndex].text!)! - Int(self.player.getAttack().magicAttack - self.skeletonDef.magicDefence);
+            let dmg = Int(self.player.getAttack().magicAttack - self.skeletonDef.magicDefence);
             if(dmg>0){
-                eHealth[indicatedIndex].text = String(dmg);
+                eHealth[indicatedIndex].text = String(Int(eHealth[indicatedIndex].text!)! - dmg);
             }
             if(Int(eHealth[indicatedIndex].text!)<=0){
                 remainingEnemies--;
@@ -336,8 +345,9 @@ class FightScene: SKScene {
                 let dmg = Int(self.player.getDefence().bluntDefence - self.skeletonPower.bluntAttack);
                 
                 print(dmg);
-                if(dmg>0){
-                    self.gameManger.player.health = self.gameManger.player.health-Double(dmg);
+                if(dmg<0){
+                    self.gameManger.player.health = self.gameManger.player.health+Double(dmg);
+                    self.playerHealth.text = String(self.gameManger.player.health);
                     
                 }
 
@@ -375,8 +385,16 @@ class FightScene: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
 
-        if(remainingEnemies==0){
-            print("GameOver");
+        if(gameManger.player.health<=0)
+        {
+            gameManger.player.health = 120;
+            navigation.popViewControllerAnimated(true);
+            navigated = true;
+        }
+        if(remainingEnemies==0 && !navigated){
+            gameManger.player.level++;
+            navigation.popViewControllerAnimated(true);
+            navigated = true;
             return
         }
         var i: Int;

@@ -100,6 +100,21 @@ class InventoryViewController: UIViewController {
         player.weapon = weapon;
         player.armour = armor;
         
+        
+        let query = PFQuery(className: "Player");
+        
+        
+        let result = query.whereKey("DeviceID", equalTo: appDelegate.deviceId).getFirstObjectInBackgroundWithBlock({ (obj: PFObject?, err: NSError?) -> Void in
+            if((err) == nil){
+                obj!["Level"] = player.level;
+                obj!["Weapons"] = player.weapons.joinWithSeparator(",")
+                obj!["Armors"] = player.armors.joinWithSeparator(",")
+                
+                obj!.saveInBackground();
+            }
+            
+        });
+        
         self.navigationController?.popViewControllerAnimated(true);
         
         
